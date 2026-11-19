@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
-import { FiMenu, FiSearch, FiShoppingBag, FiX } from "react-icons/fi";
+import { FiMenu, FiSearch, FiShoppingBag, FiUser, FiX } from "react-icons/fi";
 import Homepage_Query from "../features/home/queries/Homepage_Query";
 import Cart_query from "../features/cart/queries/Cart_query";
 import { collectionSlug, getCollections } from "../features/offday/collections";
@@ -45,26 +45,33 @@ function OffdayHeader() {
                     {menuOpen ? <FiX aria-hidden="true" /> : <FiMenu aria-hidden="true" />}
                 </button>
 
-                <button
-                    className="offday-header-search-toggle"
-                    type="button"
-                    aria-label={searchOpen ? "Close search" : "Open search"}
-                    aria-expanded={searchOpen}
-                    onClick={() => setSearchOpen((open) => !open)}
-                >
-                    <FiSearch aria-hidden="true" />
-                    <span>SEARCH</span>
-                </button>
-
                 <Link className="offday-header-logo" to="/" aria-label="OFFDAY Collections home">
                     <img src="/offday/offday-logo.png" alt="OFFDAY Collections" width="98" height="78" />
                 </Link>
 
-                <Link className="offday-header-bag" to="/checkout" aria-label={`Bag, ${cart.total_items ?? 0} items`}>
-                    <FiShoppingBag aria-hidden="true" />
-                    <span className="offday-bag-label">BAG</span>
-                    <span className="offday-bag-count" aria-hidden="true">{cart.total_items ?? 0}</span>
-                </Link>
+                <div className="offday-header-actions">
+                    <Link className="offday-header-bag" to="/checkout" aria-label={`Bag, ${cart.total_items ?? 0} items`}>
+                        <FiShoppingBag aria-hidden="true" />
+                        <span className="offday-bag-label">BAG</span>
+                        <span className="offday-bag-count" aria-hidden="true">{cart.total_items ?? 0}</span>
+                    </Link>
+
+                    <button
+                        className="offday-header-search-toggle"
+                        type="button"
+                        aria-label={searchOpen ? "Close search" : "Open search"}
+                        aria-expanded={searchOpen}
+                        onClick={() => setSearchOpen((open) => !open)}
+                    >
+                        <FiSearch aria-hidden="true" />
+                        <span>SEARCH</span>
+                    </button>
+
+                    <Link className="offday-header-account" to="/login" aria-label="Login">
+                        <FiUser aria-hidden="true" />
+                        <span>LOGIN</span>
+                    </Link>
+                </div>
 
                 {searchOpen && (
                     <form className="offday-search-panel" role="search" onSubmit={submitSearch}>
