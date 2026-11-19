@@ -3,18 +3,17 @@ import { Routes, Route, Navigate, useLocation, useParams } from 'react-router-do
 import AdminRoute from '../features/Dasboard/page/AdminRoute'
 import ProtectedRoute from '../features/auth/page/ProtectedRoute'
 
-const Home = lazy(() => import('../features/home/Home'))
-const Sale = lazy(() => import('../features/sale/page/Sale'))
+const Home = lazy(() => import('../features/offday/pages/OffdayHome'))
+const OffdayCatalogPage = lazy(() => import('../features/offday/pages/OffdayCatalogPage'))
 const Single_product = lazy(() => import('../features/single product/page/Single_product'))
 const Cart_page = lazy(() => import('../features/cart/page/Cart_Page'))
 const Wishlist = lazy(() => import('../features/wishlist/page/Wishlist'))
 const Offer_poster = lazy(() => import('../hooks/offers/page/Offer_poster'))
 const OrderDashboard = lazy(() => import('../features/Dasboard/page/OrderDashboard'))
-const About = lazy(() => import('../features/About/page/About'))
+const OffdayInfoPage = lazy(() => import('../features/offday/pages/OffdayInfoPage'))
 const Profile = lazy(() => import('../features/Profile/page/Profile'))
 const MyOrder = lazy(() => import('../features/myOrders/page/My_orders'))
 const PaymentSuccess = lazy(() => import('../features/cart/page/PaymentSuccess'))
-const ContactUs = lazy(() => import('../components/Contact'))
 const Login = lazy(() => import('../features/auth/page/Login'))
 const AdminLogin = lazy(() => import('../features/auth/page/AdminLogin'))
 const Signup = lazy(() => import('../features/auth/page/SignUp'))
@@ -44,9 +43,12 @@ function Router() {
             <Suspense fallback={<RouteLoading />}>
               <Routes>
                 <Route path='/' element={<Home />} />
-                <Route path='shop' element={<Sale />} />
-                <Route path='products' element={<Sale />} />
-                <Route path='/about' element={<About />} />
+                <Route path='shop' element={<OffdayCatalogPage />} />
+                <Route path='products' element={<OffdayCatalogPage />} />
+                <Route path='collections/:slug' element={<OffdayCatalogPage />} />
+                <Route path='/about' element={<OffdayInfoPage page="about" />} />
+                <Route path='/contact' element={<OffdayInfoPage page="contact" />} />
+                <Route path='/help/:slug' element={<OffdayInfoPage />} />
 
                 <Route path='profile' element={
                     <ProtectedRoute>
@@ -158,7 +160,6 @@ function Router() {
                     path="/payment-success"
                     element={<PaymentSuccess />}
                 />
-                <Route path='contact' element={<ContactUs />} />
 
               </Routes>
             </Suspense>

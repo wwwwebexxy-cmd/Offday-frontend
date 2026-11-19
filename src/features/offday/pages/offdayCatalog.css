@@ -1,0 +1,165 @@
+.offday-catalog-page {
+    min-height: 60vh;
+    padding-bottom: 90px;
+    background: var(--offday-cream);
+}
+
+.offday-collection-banner {
+    display: flex;
+    min-height: 225px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 45px 20px 40px;
+    background: var(--offday-black);
+    color: var(--offday-white);
+    text-align: center;
+}
+
+.offday-collection-banner .offday-eyebrow {
+    margin-bottom: 9px;
+    color: var(--offday-lime);
+}
+
+.offday-collection-banner h1 {
+    margin: 0;
+    color: var(--offday-lime);
+    font-family: var(--offday-display);
+    font-size: clamp(32px, 5vw, 55px);
+    font-weight: 600;
+    letter-spacing: -0.06em;
+    line-height: 1.05;
+    text-transform: uppercase;
+}
+
+.offday-collection-banner > p:last-child {
+    max-width: 520px;
+    margin: 13px 0 0;
+    color: #d6d4ca;
+    font-size: 12px;
+}
+
+.offday-catalog-collections {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 26px;
+    padding: 18px 20px;
+    border-bottom: 1px solid var(--offday-divider);
+}
+
+.offday-catalog-collections a {
+    padding: 6px 0;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+}
+
+.offday-catalog-collections a:hover {
+    border-bottom: 1px solid var(--offday-black);
+}
+
+.offday-catalog-results {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 36px 5% 0;
+}
+
+.offday-catalog-count-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 19px;
+}
+
+.offday-catalog-count-row h2 {
+    margin: 0;
+    color: var(--offday-muted);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+}
+
+.offday-collection-products {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 38px 14px;
+}
+
+.offday-catalog-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+    padding: 38px 0 0;
+    font-size: 11px;
+}
+
+.offday-catalog-pagination a {
+    padding-bottom: 3px;
+    border-bottom: 1px solid currentColor;
+}
+
+.offday-catalog-loading {
+    min-height: 70vh;
+    padding-bottom: 50px;
+}
+
+.offday-catalog-banner-skeleton {
+    height: 225px;
+    background: #242424;
+}
+
+.offday-catalog-grid-skeleton {
+    height: 55vh;
+    margin: 36px 5%;
+    background: repeating-linear-gradient(90deg, #e1dfd7 0, #e1dfd7 calc(33.33% - 10px), transparent calc(33.33% - 10px), transparent 33.33%);
+}
+
+.offday-catalog-state {
+    min-height: 45vh;
+}
+
+@media (max-width: 850px) {
+    .offday-catalog-page {
+        padding-bottom: 75px;
+    }
+
+    .offday-collection-banner {
+        min-height: 205px;
+    }
+
+    .offday-catalog-results {
+        padding: 28px 20px 0;
+    }
+
+    .offday-collection-products {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 30px 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .offday-collection-banner {
+        min-height: 188px;
+        padding: 34px 20px;
+    }
+
+    .offday-collection-banner h1 {
+        font-size: clamp(28px, 8.5vw, 38px);
+    }
+
+    .offday-collection-banner > p:last-child {
+        font-size: 11px;
+    }
+
+    .offday-catalog-collections {
+        justify-content: flex-start;
+        gap: 7px 17px;
+        padding: 12px 20px;
+    }
+
+    .offday-catalog-results {
+        padding: 23px 20px 0;
+    }
+}

@@ -4,8 +4,8 @@ import { useLocation } from "react-router-dom";
 import './../App.css';
 import client from "../lib/ApiClient";
 import { clearAuthSession, saveAuthSession } from "../features/auth/authUtils";
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import OffdayHeader from '../components/OffdayHeader';
+import OffdayFooter from '../components/OffdayFooter';
 import Router from './Router';
 import ScrollToTop from '../components/ScrollToTop';
 import SeoHead from '../components/SeoHead';
@@ -14,7 +14,7 @@ function App() {
 
     const location = useLocation();
     const normalizedPath = location.pathname.toLowerCase();
-    const isAdminPage = normalizedPath.startsWith("/admin-dashboard") || normalizedPath.startsWith("/orderdashboard") || normalizedPath.startsWith("/order-dashboard");
+    const isAdminPage = normalizedPath === "/admin-login" || normalizedPath.startsWith("/admin-dashboard") || normalizedPath.startsWith("/orderdashboard") || normalizedPath.startsWith("/order-dashboard");
     const [authState, setAuthState] = useState(() => ({ pathname: location.pathname, ready: !isAdminPage }));
     const authReady = authState.pathname === location.pathname ? authState.ready : !isAdminPage;
 
@@ -48,13 +48,17 @@ function App() {
             <SeoHead />
             <ScrollToTop />
 
-            {!isAdminPage && <Navbar />}
-
-            <div style={{ minHeight: 'calc(100vh - 64px)' }}>
+            {isAdminPage ? (
                 <Router />
-            </div>
-
-            {!isAdminPage && <Footer />}
+            ) : (
+                <div className="offday-site">
+                    <OffdayHeader />
+                    <div className="offday-site-content" style={{ minHeight: 'calc(100vh - 64px)' }}>
+                        <Router />
+                    </div>
+                    <OffdayFooter />
+                </div>
+            )}
         </>
     );
 }

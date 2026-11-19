@@ -9,7 +9,7 @@ import showToast from "../../../utils/toast";
 import { FiDownload } from "react-icons/fi";
 import defaultProductImage from "../../../assets/image-not-available-optimized.webp";
 
-const formatOrderNumber = (id) => `LL26/${String(id).padStart(4, "0")}`;
+const formatOrderNumber = (id) => `ODC-${String(id).padStart(6, "0")}`;
 const isPaidOrder = (order) => String(order?.payment_status || "").toLowerCase() === "paid";
 
 const MyOrders = () => {
@@ -63,7 +63,7 @@ const MyOrders = () => {
                 : new Blob([response.data], { type: "application/pdf" });
             const contentDisposition = response.headers?.["content-disposition"] || "";
             const filename = contentDisposition.match(/filename="?([^";]+)"?/i)?.[1]
-                || `LL26-${String(orderId).padStart(4, "0")}-tax-invoice.pdf`;
+                || `ODC-${String(orderId).padStart(6, "0")}-tax-invoice.pdf`;
             const url = URL.createObjectURL(blob);
             const link = document.createElement("a");
             link.href = url;

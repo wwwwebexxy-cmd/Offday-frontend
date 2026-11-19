@@ -1,0 +1,87 @@
+.offday-info-page {
+    min-height: 58vh;
+    padding-bottom: 80px;
+    background: var(--offday-cream);
+}
+
+.offday-info-heading {
+    display: flex;
+    min-height: 290px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 20px;
+    background: var(--offday-black);
+    color: var(--offday-white);
+    text-align: center;
+}
+
+.offday-info-heading .offday-eyebrow {
+    color: var(--offday-lime);
+}
+
+.offday-info-heading h1 {
+    max-width: 850px;
+    margin: 0;
+    font-family: var(--offday-display);
+    font-size: clamp(36px, 6vw, 68px);
+    font-weight: 600;
+    letter-spacing: -0.065em;
+    line-height: 1;
+}
+
+.offday-info-heading > p:last-child {
+    max-width: 600px;
+    margin: 16px 0 0;
+    color: #d6d4ca;
+    font-size: 13px;
+}
+
+.offday-info-content {
+    width: min(760px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 45px 0;
+}
+
+.offday-info-content > p {
+    margin: 0 0 18px;
+    color: #5f5d57;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.offday-faq-list {
+    border-top: 1px solid var(--offday-divider);
+}
+
+.offday-faq-list details {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--offday-divider);
+}
+
+.offday-faq-list summary {
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.offday-faq-list details p {
+    margin: 12px 0 0;
+    color: var(--offday-muted);
+    font-size: 12px;
+}
+
+.offday-info-content .offday-text-link {
+    display: inline-block;
+    margin-top: 15px;
+}
+
+@media (max-width: 480px) {
+    .offday-info-heading {
+        min-height: 240px;
+    }
+
+    .offday-info-content {
+        padding: 34px 0;
+    }
+}

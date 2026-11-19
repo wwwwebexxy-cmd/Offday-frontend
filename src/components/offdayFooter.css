@@ -1,0 +1,123 @@
+.offday-footer {
+    padding: 62px 5% 22px;
+    background: var(--offday-black);
+    color: #c5c1b8;
+}
+
+.offday-footer-grid {
+    display: grid;
+    max-width: 1440px;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin: 0 auto;
+    padding-bottom: 52px;
+}
+
+.offday-footer-brand img {
+    width: 164px;
+    height: 130px;
+    object-fit: contain;
+    object-position: left center;
+    filter: brightness(0) invert(1);
+}
+
+.offday-footer-brand p {
+    max-width: 270px;
+    margin: 14px 0 0;
+    color: #aaa69d;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.offday-footer-column h2 {
+    margin: 6px 0 20px;
+    color: var(--offday-lime);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+}
+
+.offday-footer-column ul {
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.offday-footer-column li,
+.offday-footer-column a,
+.offday-footer-pending {
+    color: #c5c1b8;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.offday-footer-column a:hover {
+    color: var(--offday-lime);
+}
+
+.offday-footer-pending {
+    color: #8d8a83;
+}
+
+.offday-footer-bottom {
+    display: flex;
+    max-width: 1440px;
+    min-height: 44px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin: 0 auto;
+    padding-top: 15px;
+    border-top: 1px solid #444444;
+    color: #8d8a83;
+    font-size: 9px;
+    letter-spacing: 0.04em;
+}
+
+.offday-footer-bottom nav {
+    display: flex;
+    gap: 18px;
+}
+
+.offday-footer-bottom a:hover {
+    color: var(--offday-white);
+}
+
+@media (max-width: 850px) {
+    .offday-footer {
+        padding: 42px 20px 20px;
+    }
+
+    .offday-footer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 34px 20px;
+        padding-bottom: 32px;
+    }
+
+    .offday-footer-brand {
+        grid-column: 1 / -1;
+    }
+
+    .offday-footer-brand img {
+        width: 138px;
+        height: 110px;
+    }
+}
+
+@media (max-width: 480px) {
+    .offday-footer {
+        padding: 34px 20px 18px;
+    }
+
+    .offday-footer-grid {
+        gap: 28px 14px;
+    }
+
+    .offday-footer-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+    }
+}

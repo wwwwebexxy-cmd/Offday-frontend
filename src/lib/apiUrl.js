@@ -1,11 +1,9 @@
-// VITE_API_BASE_URL is the supported configuration. Keep VITE_API_URL as a
-// migration fallback, and default to a same-origin API path when no origin is
-// configured.
-const configuredApiUrl = String(
-    import.meta.env.VITE_API_BASE_URL
-        || import.meta.env.VITE_API_URL
-        || "/backend",
-).trim().replace(/\/+$/, "");
+// Use a new project-scoped API setting so a prior project's URL is never
+// inherited from a local .env file. The same-origin path works with the local
+// Vite proxy and can be routed by the new deployment environment.
+const configuredApiUrl = String(import.meta.env.VITE_OFFDAY_API_BASE_URL || "/backend")
+    .trim()
+    .replace(/\/+$/, "");
 
 const isRelativeApiUrl = configuredApiUrl.startsWith("/");
 const parsedApiUrl = isRelativeApiUrl ? null : new URL(configuredApiUrl);
@@ -16,7 +14,7 @@ if (import.meta.env.PROD && parsedApiUrl && parsedApiUrl.protocol !== "https:") 
     throw new Error("Production builds must use an HTTPS API origin.");
 }
 if (typeof window !== "undefined" && window.location.protocol === "https:" && parsedApiUrl && parsedApiUrl.protocol !== "https:") {
-    throw new Error("VITE_API_BASE_URL must use HTTPS when the storefront uses HTTPS.");
+    throw new Error("VITE_OFFDAY_API_BASE_URL must use HTTPS when the storefront uses HTTPS.");
 }
 
 export const API_URL = isRelativeApiUrl ? configuredApiUrl : parsedApiUrl.toString().replace(/\/$/, "");

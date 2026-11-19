@@ -42,7 +42,7 @@ function New_Arrival_Home({
     products,
     totalCount,
     title = "New Arrivals",
-    subtitle = "Explore the latest available medical supplies.",
+    subtitle = "New drops, considered pieces and everyday essentials.",
     viewAllTo = "/shop?sort=new",
     showNewBadge = false,
     tone = "new",

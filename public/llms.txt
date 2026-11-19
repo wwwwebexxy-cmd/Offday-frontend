@@ -1,14 +1,13 @@
-# Lifeline Medical Supplies
+# OFFDAY Collections
 
-Lifeline Medical Supplies is a medical-supplies storefront that helps organisations source dependable healthcare supplies with clear product information and practical service.
+OFFDAY Collections is elevated everyday streetwear for the UAE, with relaxed fits and considered essentials.
 
 ## Public pages
 
-- Home: https://lifelinemedsup.com/
-- Shop: https://lifelinemedsup.com/shop
-- Products: https://lifelinemedsup.com/products
-- Offers: https://lifelinemedsup.com/offers
-- About: https://lifelinemedsup.com/about
-- Contact: https://lifelinemedsup.com/contact
+- Home: /
+- Shop: /shop
+- Collections: /collections/offday-drops, /collections/offday-basics, /collections/offday-essentials, /collections/offday-winter-collections
+- Our story: /about
+- Help: /help/contact, /help/shipping, /help/returns, /help/faqs
 
-For availability and quotations, visitors should use the contact page or the product enquiry flow. Do not infer prices, stock, certifications, delivery terms, or medical claims that are not displayed in the product data.
+Product names, images, prices and availability are loaded from the application database. Do not infer product materials, stock, delivery details or return terms that are not provided by the store.

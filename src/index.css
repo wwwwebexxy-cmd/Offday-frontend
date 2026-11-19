@@ -1,44 +1,36 @@
 :root {
-  /* ===== LIFE-LINE BRAND DESIGN TOKENS ===== */
+  /* OFFDAY Collections brand tokens with aliases for retained account flows. */
+  --offday-lime: #C6F135;
+  --offday-black: #111111;
+  --offday-cream: #F1F0E9;
+  --offday-white: #FFFFFF;
+  --offday-muted: #686860;
 
-  /* Lifeline Medical Supplies brand palette */
-  --lifeline-navy: #15365B;
-  --lifeline-green: #2F8D45;
-  --lifeline-slate: #53616D;
-  --lifeline-soft-grey: #F3F6F8;
-  --lifeline-white: #FFFFFF;
+  --primary-orange: var(--offday-lime);
+  --primary-orange-hover: #B0D52D;
+  --primary-orange-light: #F2F8D8;
+  --primary-orange-bg: rgba(198, 241, 53, 0.16);
 
-  /* Compatibility aliases used by existing storefront components */
-  --primary-orange: var(--lifeline-green);
-  --primary-orange-hover: #246D36;
-  --primary-orange-light: #EAF4ED;
-  --primary-orange-bg: rgba(47, 141, 69, 0.08);
+  --primary-slate: var(--offday-black);
+  --primary-slate-hover: #333333;
+  --primary-slate-light: var(--offday-muted);
+  --primary-slate-muted: #77776F;
 
-  /* Slate Colors */
-  --primary-slate: var(--lifeline-navy);
-  --primary-slate-hover: #102B49;
-  --primary-slate-light: var(--lifeline-slate);
-  --primary-slate-muted: #7A8790;
+  --background: var(--offday-cream);
+  --surface-card: var(--offday-white);
+  --surface-elevated: var(--offday-white);
 
-  /* Background & Surfaces */
-  --background: var(--lifeline-white);
-  --surface-card: var(--lifeline-white);
-  --surface-elevated: var(--lifeline-white);
+  --text-primary: var(--offday-black);
+  --text-secondary: #50504A;
+  --text-muted: #77776F;
+  --text-on-dark: var(--offday-white);
 
-  /* Text */
-  --text-primary: var(--lifeline-navy);
-  --text-secondary: var(--lifeline-slate);
-  --text-muted: #7A8790;
-  --text-on-dark: var(--lifeline-white);
+  --border-color: #D6D4CA;
+  --border-light: #E5E3DB;
 
-  /* Borders */
-  --border-color: #D9E2E8;
-  --border-light: #E8EEF1;
-
-  /* Misc */
-  --shadow-sm: 0 2px 8px rgba(21, 54, 91, 0.06);
-  --shadow-md: 0 8px 24px rgba(21, 54, 91, 0.08);
-  --shadow-lg: 0 16px 40px rgba(21, 54, 91, 0.10);
+  --shadow-sm: 0 2px 8px rgba(17, 17, 17, 0.06);
+  --shadow-md: 0 8px 24px rgba(17, 17, 17, 0.08);
+  --shadow-lg: 0 16px 40px rgba(17, 17, 17, 0.10);
 }
 
 body {
@@ -46,7 +38,7 @@ body {
   padding: 0;
   background: var(--background);
   color: var(--text-primary);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;

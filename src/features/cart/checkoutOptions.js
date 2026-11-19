@@ -1,15 +1,18 @@
 export const CHECKOUT_PAYMENT_METHOD = "WHATSAPP";
 
+export const CHECKOUT_WHATSAPP_NUMBER = String(
+    import.meta.env.VITE_OFFDAY_CHECKOUT_WHATSAPP_NUMBER || import.meta.env.VITE_OFFDAY_WHATSAPP_NUMBER || "",
+).replace(/\D/g, "");
+
 export const CHECKOUT_PAYMENT_OPTIONS = Object.freeze([
     {
         value: CHECKOUT_PAYMENT_METHOD,
         title: "Order through WhatsApp",
-        description: "Open WhatsApp with your order details ready to send.",
+        description: CHECKOUT_WHATSAPP_NUMBER
+            ? "Open WhatsApp with your order details ready to send."
+            : "WhatsApp ordering will be available soon.",
     },
 ]);
-
-// Checkout must always open the business WhatsApp chat directly.
-export const CHECKOUT_WHATSAPP_NUMBER = "971562637379";
 
 export function buildWhatsAppCheckoutMessage({ orderId, address = {}, items = [], total }) {
     const itemLines = items.map((item) => {
@@ -46,11 +49,12 @@ export function buildWhatsAppCheckoutMessage({ orderId, address = {}, items = []
     ].join("\n");
 }
 
-export function buildWhatsAppCheckoutUrl({ orderId, address, items, total }) {
-    if (!CHECKOUT_WHATSAPP_NUMBER) {
+export function buildWhatsAppCheckoutUrl({ orderId, address, items, total, whatsappNumber = CHECKOUT_WHATSAPP_NUMBER }) {
+    const recipient = String(whatsappNumber || "").replace(/\D/g, "");
+    if (!recipient) {
         throw new Error("WhatsApp checkout is not configured.");
     }
 
     const message = buildWhatsAppCheckoutMessage({ orderId, address, items, total });
-    return `https://wa.me/${CHECKOUT_WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    return `https://wa.me/${recipient}?text=${encodeURIComponent(message)}`;
 }

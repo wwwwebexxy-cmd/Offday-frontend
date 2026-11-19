@@ -1,5 +1,4 @@
-/* Lifeline Medical Supplies brand layer.
- * Source: Lifeline master brand system — navy, green, slate, soft grey and white.
+/* Retained component styles share the OFFDAY palette defined in index.css.
  * This file intentionally sits after feature styles so legacy theme literals do not
  * leak into the reusable project surfaces.
  */
@@ -369,7 +368,7 @@ a.nav_link.active,
 
 /* Commerce, cart, checkout and order surfaces */
 .checkout-page,
-.life-line-checkout,
+.offday-checkout,
 .orders-page,
 .salePage-main,
 .catalog-container {
@@ -379,7 +378,7 @@ a.nav_link.active,
 
 .order-summary,
 .Checkout_card,
-.life-line-checkout-card,
+.offday-checkout-card,
 .orders-list .order-product-entry {
     background: #fff;
     border-color: var(--brand-line);
@@ -387,24 +386,24 @@ a.nav_link.active,
 }
 
 .order-summary h2,
-.life-line-checkout-title,
-.life-line-card-header h2,
-.life-line-checkout-card h2,
+.offday-checkout-title,
+.offday-card-header h2,
+.offday-checkout-card h2,
 .orders-header h1,
 .product-details h4,
-.life-line-summary-details h4,
+.offday-summary-details h4,
 .order-product-info h2 {
     color: var(--brand-navy);
 }
 
 .product-details p,
 .price-row,
-.life-line-checkout-subtitle,
-.life-line-address-info p,
-.life-line-payment-card p,
-.life-line-summary-details p,
-.life-line-summary-price,
-.life-line-summary-row,
+.offday-checkout-subtitle,
+.offday-address-info p,
+.offday-payment-card p,
+.offday-summary-details p,
+.offday-summary-price,
+.offday-summary-row,
 .orders-header p,
 .orders-count,
 .order-reference,
@@ -416,8 +415,8 @@ a.nav_link.active,
 .quantity-box button,
 .coupon button,
 .continue-btn,
-.life-line-add-address-btn,
-.life-line-checkout-btn,
+.offday-add-address-btn,
+.offday-checkout-btn,
 .product_count,
 .apply_btn {
     background: var(--brand-green);
@@ -428,8 +427,8 @@ a.nav_link.active,
 .quantity-box button:hover,
 .coupon button:hover,
 .continue-btn:hover,
-.life-line-add-address-btn:hover,
-.life-line-checkout-btn:hover,
+.offday-add-address-btn:hover,
+.offday-checkout-btn:hover,
 .product_count:hover,
 .product_count[aria-expanded="true"],
 .apply_btn:hover {
@@ -439,7 +438,7 @@ a.nav_link.active,
 
 .cart_remove-btn,
 .total-row,
-.life-line-grand-total h2,
+.offday-grand-total h2,
 .orders-count strong,
 .order-number,
 .order-total strong,
@@ -449,34 +448,34 @@ a.nav_link.active,
 }
 
 .coupon input,
-.life-line-checkout-card,
-.life-line-address-card,
-.life-line-payment-card,
-.life-line-payment-option,
+.offday-checkout-card,
+.offday-address-card,
+.offday-payment-card,
+.offday-payment-option,
 .input-group input,
 .input-group select,
 .input-group textarea {
     border-color: var(--brand-line);
 }
 
-.life-line-address-card:hover,
-.life-line-payment-option:hover,
-.life-line-payment-option.active {
+.offday-address-card:hover,
+.offday-payment-option:hover,
+.offday-payment-option.active {
     border-color: var(--brand-green);
     background: #F7FBF8;
 }
 
-.life-line-address-card.active {
+.offday-address-card.active {
     border-color: var(--brand-green);
     background: #EAF4ED;
 }
 
-.life-line-address-card input,
-.life-line-payment-option input {
+.offday-address-card input,
+.offday-payment-option input {
     accent-color: var(--brand-green);
 }
 
-.life-line-empty-box,
+.offday-empty-box,
 .orders-empty,
 .orders-state {
     color: var(--brand-slate);
@@ -614,7 +613,7 @@ a.nav_link.active,
     border: 0;
 }
 
-/* Hero/media overlays keep text readable while using Lifeline navy as the anchor. */
+/* Hero/media overlays keep text readable against the current storefront palette. */
 .hero-split-layout {
     background: var(--brand-soft);
 }

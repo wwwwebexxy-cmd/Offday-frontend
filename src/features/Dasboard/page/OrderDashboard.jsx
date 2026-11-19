@@ -18,7 +18,6 @@ import CouponUsageEditor from "./CouponUsageEditor";
 import WelcomeBonusEditor from "./WelcomeBonusEditor";
 import WelcomeBonusPage from "./WelcomeBonusPage";
 import TokenBlacklistPage from "./TokenBlacklistPage";
-import navbarLogo from "../../../assets/lifeline-logo-optimized.webp";
 import { getImageUrl } from "../../../utils/imageUrl";
 import { logoutSession } from "../../../lib/ApiClient";
 import { getPasswordPolicyError } from "../../auth/passwordPolicy";
@@ -403,7 +402,7 @@ export default function OrderDashboard() {
 
     return <div className="admin-app">
         <aside className={`admin-sidebar ${sidebarOpen ? "open" : ""}`}>
-            <div className="admin-brand"><span className="admin-brand-logo" aria-label="Life-line Medical Supplies"><img src={navbarLogo} alt="" /></span><button type="button" className="admin-close" onClick={() => setSidebarOpen(false)} aria-label="Close navigation"><FiX aria-hidden="true" /></button></div>
+            <div className="admin-brand"><span className="admin-brand-logo" aria-label="OFFDAY Collections"><img src="/offday/offday-logo.png" alt="OFFDAY Collections" /></span><button type="button" className="admin-close" onClick={() => setSidebarOpen(false)} aria-label="Close navigation"><FiX aria-hidden="true" /></button></div>
             <nav className="admin-nav">{navGroups.map((group) => <div key={group.title}><p className="admin-nav-label">{group.title}</p>{group.items.map(({ key, label, icon: Icon }) => <button key={key} className={`admin-nav-item ${pathKey === key ? "active" : ""}`} onClick={() => go(key)}><Icon /><span>{label}</span></button>)}</div>)}</nav>
             <div className="admin-sidebar-footer"><div className="admin-user"><span>{(getAuthValue("first_name") || "S").slice(0, 1).toUpperCase()}</span><div><strong>{getAuthValue("first_name") || "Super Admin"}</strong><small>Super Admin</small></div></div><button className="admin-nav-item admin-logout-button" onClick={logout}><FiLogOut /><span>Sign out</span></button></div>
         </aside>
@@ -1006,7 +1005,7 @@ function OrderDetailContent({ order, id, navigate }) {
                 : new Blob([response.data], { type: "application/pdf" });
             const contentDisposition = response.headers?.["content-disposition"] || "";
             const filename = contentDisposition.match(/filename="?([^";]+)"?/i)?.[1]
-                || `LL26-${String(id).padStart(4, "0")}-package-label.pdf`;
+                || `ODC-${String(id).padStart(6, "0")}-package-label.pdf`;
             const url = URL.createObjectURL(blob);
             const link = document.createElement("a");
             link.href = url;
@@ -1032,7 +1031,7 @@ function OrderDetailContent({ order, id, navigate }) {
                 : new Blob([response.data], { type: "application/pdf" });
             const contentDisposition = response.headers?.["content-disposition"] || "";
             const filename = contentDisposition.match(/filename="?([^";]+)"?/i)?.[1]
-                || `LL26-${String(id).padStart(4, "0")}-tax-invoice.pdf`;
+                || `ODC-${String(id).padStart(6, "0")}-tax-invoice.pdf`;
             const url = URL.createObjectURL(blob);
             const link = document.createElement("a");
             link.href = url;

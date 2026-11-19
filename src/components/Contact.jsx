@@ -67,14 +67,13 @@ Thank you.`;
                 </span>
 
                 <h1>
-                    Enquire about medical supplies
+                    Have a question about OFFDAY?
                 </h1>
 
                 <p>
-                    Contact our team to enquire about availability,
-                    product information and quotations.
-                    Fill out the form below and send us
-                    a message directly on WhatsApp.
+                    Message our team about orders, sizing and our
+                    collections. Fill out the form below to reach us
+                    directly on WhatsApp.
                 </p>
 
             </div>
@@ -92,11 +91,11 @@ Thank you.`;
                         <h4>Enquiries</h4>
 
                         <p>
-                            Availability and quotations
+                            Orders and collections
                         </p>
 
                         <p>
-                            Share the products or categories you need.
+                            Tell us which piece or order you have a question about.
                         </p>
 
                     </div>
@@ -106,7 +105,7 @@ Thank you.`;
                         <h4>What to include</h4>
 
                         <p>
-                            Include quantities, preferred specifications and any timing requirements when known.
+                            Share your order number, size or product details when relevant.
                         </p>
 
                     </div>
@@ -116,7 +115,7 @@ Thank you.`;
                         <h4>Product details</h4>
 
                         <p>
-                            Send us a WhatsApp message and our team will follow up with practical next steps.
+                            Send us a WhatsApp message and our team will help with fit, availability or your order.
                         </p>
 
                     </div>

@@ -1,0 +1,72 @@
+.offday-site {
+    --offday-lime: #c6f135;
+    --offday-black: #111111;
+    --offday-cream: #f1f0e9;
+    --offday-white: #ffffff;
+    --offday-muted: #686860;
+    --offday-divider: #d6d4ca;
+    --offday-story: #d7d7ce;
+    --offday-image-bg: #deddd5;
+    --offday-display: "Manrope", sans-serif;
+    --offday-body: "DM Sans", sans-serif;
+    background: var(--offday-cream);
+    color: var(--offday-black);
+    font-family: var(--offday-body);
+    font-size: 14px;
+    line-height: 1.5;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+}
+
+.offday-site *,
+.offday-site *::before,
+.offday-site *::after {
+    box-sizing: border-box;
+}
+
+.offday-site a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.offday-site button,
+.offday-site input {
+    font: inherit;
+}
+
+.offday-site button {
+    color: inherit;
+}
+
+.offday-site :focus-visible {
+    outline: 2px solid var(--offday-black);
+    outline-offset: 4px;
+}
+
+.offday-site img {
+    display: block;
+    max-width: 100%;
+}
+
+.offday-visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .offday-site *,
+    .offday-site *::before,
+    .offday-site *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

@@ -112,7 +112,7 @@ const Invoice = () => {
                     <div className="invoice-company">
 
                         <h1>
-                            life-line
+                            OFFDAY Collections
                         </h1>
 
                         <p>
@@ -411,7 +411,7 @@ const Invoice = () => {
 
                         <p>
                             Thank you for shopping with
-                            <strong> life-line </strong>.
+                            <strong> OFFDAY Collections </strong>.
                         </p>
 
                         <p>

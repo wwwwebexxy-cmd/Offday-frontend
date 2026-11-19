@@ -9,6 +9,7 @@ import DirhamAmount from "../../../components/DirhamAmount";
 import {
     buildWhatsAppCheckoutUrl,
     CHECKOUT_PAYMENT_OPTIONS,
+    CHECKOUT_WHATSAPP_NUMBER,
 } from "../checkoutOptions";
 
 const Checkout = () => {
@@ -149,7 +150,7 @@ const Checkout = () => {
             } else {
                 setCheckoutError(
                     error.response?.data?.message
-                        || "Unable to place the order through WhatsApp. Please try again."
+                        || "WhatsApp ordering is not set up yet. Please check back soon."
                 );
             }
 
@@ -174,17 +175,17 @@ const Checkout = () => {
     }
         return (
 
-        <div className="life-line-checkout">
+        <div className="offday-checkout">
 
-            <div className="life-line-checkout-header">
+            <div className="offday-checkout-header">
 
-                <h1 className="life-line-checkout-title">
+                <h1 className="offday-checkout-title">
 
                     Checkout
 
                 </h1>
 
-                <p className="life-line-checkout-subtitle">
+                <p className="offday-checkout-subtitle">
 
                     Add your delivery details, then continue directly to WhatsApp.
 
@@ -194,13 +195,13 @@ const Checkout = () => {
 
             </div>
 
-            <div className="life-line-checkout-wrapper">
+            <div className="offday-checkout-wrapper">
 
-                <div className="life-line-checkout-left">
+                <div className="offday-checkout-left">
 
-                    <div className="life-line-checkout-card">
+                    <div className="offday-checkout-card">
 
-                        <div className="life-line-card-header">
+                        <div className="offday-card-header">
 
                             <h2>
 
@@ -209,7 +210,7 @@ const Checkout = () => {
                             </h2>
 
                             <button
-                                className="life-line-add-address-btn"
+                                className="offday-add-address-btn"
                                 onClick={() => navigate("/profile")}
                             >
 
@@ -223,7 +224,7 @@ const Checkout = () => {
 
                             addresses.length === 0 ?
 
-                                <div className="life-line-empty-box">
+                                <div className="offday-empty-box">
 
                                     <p>
 
@@ -239,7 +240,7 @@ const Checkout = () => {
 
                                     <div
                                         key={address.id}
-                                        className={`life-line-address-card ${
+                                        className={`offday-address-card ${
                                             selectedAddress === address.id
                                                 ? "active"
                                                 : ""
@@ -259,7 +260,7 @@ const Checkout = () => {
                                             }
                                         />
 
-                                        <div className="life-line-address-info">
+                                        <div className="offday-address-info">
 
                                             <h4>
 
@@ -302,7 +303,7 @@ const Checkout = () => {
 
                     </div>
 
-                    <div className="life-line-checkout-card">
+                    <div className="offday-checkout-card">
 
                         <h2>
 
@@ -310,9 +311,9 @@ const Checkout = () => {
 
                         </h2>
 
-                        <div className="life-line-payment-card">
+                        <div className="offday-payment-card">
 
-                            <div className="life-line-payment-title">
+                            <div className="offday-payment-title">
 
                             Choose how to place your order
 
@@ -320,12 +321,14 @@ const Checkout = () => {
 
                             <p>
 
-                                Your order will be confirmed through WhatsApp.
+                                {CHECKOUT_WHATSAPP_NUMBER
+                                    ? "Your order will be confirmed through WhatsApp."
+                                    : "WhatsApp ordering will be available soon."}
 
                             </p>
 
                             {CHECKOUT_PAYMENT_OPTIONS.map((option) => (
-                                <div className="life-line-payment-option active" key={option.value}>
+                                <div className="offday-payment-option active" key={option.value}>
                                     <span>
                                         <strong>{option.title}</strong>
                                         <small>{option.description}</small>
@@ -339,9 +342,9 @@ const Checkout = () => {
 
                 </div>
 
-                <div className="life-line-checkout-right">
+                <div className="offday-checkout-right">
 
-                    <div className="life-line-checkout-card">
+                    <div className="offday-checkout-card">
 
                         <h2>
 
@@ -353,7 +356,7 @@ const Checkout = () => {
 
                             cartItems.length === 0 ?
 
-                                <div className="life-line-empty-box">
+                                <div className="offday-empty-box">
 
                                     <p>
 
@@ -369,10 +372,10 @@ const Checkout = () => {
 
                                     <div
                                         key={item.id}
-                                        className="life-line-summary-item"
+                                        className="offday-summary-item"
                                     >
 
-                                        <div className="life-line-summary-image">
+                                        <div className="offday-summary-image">
 
                                             <img
                                                 src={getImageUrl(item.product_image)}
@@ -381,7 +384,7 @@ const Checkout = () => {
 
                                         </div>
 
-                                        <div className="life-line-summary-details">
+                                        <div className="offday-summary-details">
 
                                             <h4>
 
@@ -417,7 +420,7 @@ const Checkout = () => {
 
                                         </div>
 
-                                        <div className="life-line-summary-price">
+                                        <div className="offday-summary-price">
 
                                             <DirhamAmount value={Number(item.total_price)} />
 
@@ -429,10 +432,10 @@ const Checkout = () => {
 
                         }
 
-                        <div className="life-line-summary-total">
-                                                        <div className="life-line-summary-row">
+                        <div className="offday-summary-total">
+                                                        <div className="offday-summary-row">
 
-                                <span className="life-line-subtotal-label">
+                                <span className="offday-subtotal-label">
 
                                     <span>Subtotal</span>
                                     <small>Price includes 5% VAT</small>
@@ -447,7 +450,7 @@ const Checkout = () => {
 
                             </div>
 
-                            {/* <div className="life-line-summary-row">
+                            {/* <div className="offday-summary-row">
 
                                 <span>
 
@@ -469,7 +472,7 @@ const Checkout = () => {
                             </div> */}
 
                             {cartSummary.shipping > 0 && (
-                                <div className="life-line-summary-row">
+                                <div className="offday-summary-row">
 
                                     <span>
 
@@ -486,7 +489,7 @@ const Checkout = () => {
                                 </div>
                             )}
 
-                            <div className="life-line-summary-row">
+                            <div className="offday-summary-row">
 
                                 <span>
 
@@ -502,9 +505,9 @@ const Checkout = () => {
 
                             </div>
 
-                            <div className="life-line-summary-divider"></div>
+                            <div className="offday-summary-divider"></div>
 
-                            <div className="life-line-grand-total">
+                            <div className="offday-grand-total">
 
                                 <div>
 
@@ -527,9 +530,9 @@ const Checkout = () => {
                         </div>
 
                         <button
-                            className="life-line-checkout-btn"
+                            className="offday-checkout-btn"
                             onClick={placeOrder}
-                            disabled={processing || cartItems.length === 0}
+                            disabled={processing || cartItems.length === 0 || !CHECKOUT_WHATSAPP_NUMBER}
                         >
 
                             {
@@ -542,15 +545,17 @@ const Checkout = () => {
 
                                     :
 
-                                    "Continue via WhatsApp"
+                                    CHECKOUT_WHATSAPP_NUMBER ? "Continue via WhatsApp" : "Ordering unavailable"
 
                             }
 
                         </button>
 
-                        <p className="life-line-payment-note">
+                        <p className="offday-payment-note">
 
-                            "Your name, phone, address, items, and total will open in WhatsApp."
+                            CHECKOUT_WHATSAPP_NUMBER
+                                ? "Your name, phone, address, items, and total will open in WhatsApp."
+                                : "WhatsApp ordering will be available soon."
 
                         </p>
 

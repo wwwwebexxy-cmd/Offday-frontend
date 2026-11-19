@@ -1,4 +1,4 @@
-.life-line-checkout{
+.offday-checkout{
     width: 100%;
     min-width: 0;
     max-width:1280px;
@@ -15,11 +15,11 @@
     font-weight: 600;
 }
 
-.life-line-checkout-header{
+.offday-checkout-header{
     margin-bottom:32px;
 }
 
-.life-line-checkout-title{
+.offday-checkout-title{
     font-size:34px;
     font-weight:600;
     color: #4B636D;
@@ -27,12 +27,12 @@
     letter-spacing:-.5px;
 }
 
-.life-line-checkout-subtitle{
+.offday-checkout-subtitle{
     font-size:15px;
     color:#6b7280;
 }
 
-.life-line-checkout-wrapper{
+.offday-checkout-wrapper{
     min-width: 0;
     display:grid;
     grid-template-columns:minmax(0,2fr) 420px;
@@ -40,20 +40,20 @@
     align-items:start;
 }
 
-.life-line-checkout-left{
+.offday-checkout-left{
     min-width: 0;
     display:flex;
     flex-direction:column;
     gap:24px;
 }
 
-.life-line-checkout-right{
+.offday-checkout-right{
     min-width: 0;
     position:sticky;
     top:20px;
 }
 
-.life-line-checkout-card{
+.offday-checkout-card{
     min-width: 0;
     background: #FFFFFF;
     border:1px solid #ececec;
@@ -62,26 +62,26 @@
     transition:border-color .25s ease,box-shadow .25s ease;
 }
 
-.life-line-checkout-card:hover{
+.offday-checkout-card:hover{
     border-color: #E2E6E0;
     box-shadow:0 8px 24px rgba(0,0,0,.06);
 }
 
-.life-line-card-header{
+.offday-card-header{
     display:flex;
     justify-content:space-between;
     align-items:center;
     margin-bottom:22px;
 }
 
-.life-line-card-header h2,
-.life-line-checkout-card h2{
+.offday-card-header h2,
+.offday-checkout-card h2{
     font-size:21px;
     font-weight:600;
     color: #4B636D;
 }
 
-.life-line-add-address-btn{
+.offday-add-address-btn{
     border:none;
     background:#2F8D45;
     color: #FFFFFF;
@@ -93,15 +93,15 @@
     transition:background .25s ease;
 }
 
-.life-line-add-address-btn:hover{
+.offday-add-address-btn:hover{
     background:#246D36;
 }
 
-.life-line-add-address-btn:active{
+.offday-add-address-btn:active{
     transform:scale(.98);
 }
 
-.life-line-address-card{
+.offday-address-card{
     display:flex;
     gap:16px;
     align-items:flex-start;
@@ -113,45 +113,45 @@
     transition:border-color .25s ease,background .25s ease;
 }
 
-.life-line-address-card:last-child{
+.offday-address-card:last-child{
     margin-bottom:0;
 }
 
-.life-line-address-card:hover{
+.offday-address-card:hover{
     border-color:#c7c7c7;
     background:#F8F9F3;
 }
 
-.life-line-address-card.active{
+.offday-address-card.active{
     border-color:#2F8D45;
     background:#EAF4ED;
 }
 
-.life-line-address-card input{
+.offday-address-card input{
     margin-top:4px;
     accent-color:#2F8D45;
 }
 
-.life-line-address-info{
+.offday-address-info{
     min-width: 0;
     flex:1;
 }
 
-.life-line-address-info h4{
+.offday-address-info h4{
     font-size:17px;
     font-weight:600;
     color: #4B636D;
     margin-bottom:6px;
 }
 
-.life-line-address-info p{
+.offday-address-info p{
     font-size:14px;
     color: #4B636D;
     line-height:1.6;
     margin-bottom:2px;
 }
 
-.life-line-payment-card{
+.offday-payment-card{
     display:flex;
     flex-direction:column;
     align-items:stretch;
@@ -163,24 +163,24 @@
     transition:border-color .25s ease;
 }
 
-.life-line-payment-card:hover{
+.offday-payment-card:hover{
     border-color:#d2d2d2;
 }
 
-.life-line-payment-title{
+.offday-payment-title{
     font-size:16px;
     font-weight:600;
     color: #4B636D;
     margin-bottom:5px;
 }
 
-.life-line-payment-card p{
+.offday-payment-card p{
     font-size:14px;
     color: #4B636D;
     line-height:1.6;
 }
 
-.life-line-payment-option{
+.offday-payment-option{
     display:flex;
     align-items:flex-start;
     gap:12px;
@@ -191,35 +191,35 @@
     transition:border-color .25s ease,background .25s ease;
 }
 
-.life-line-payment-option:hover,
-.life-line-payment-option.active{
+.offday-payment-option:hover,
+.offday-payment-option.active{
     border-color:#2F8D45;
     background:#FFF8EC;
 }
 
-.life-line-payment-option input{
+.offday-payment-option input{
     margin-top:3px;
     accent-color:#2F8D45;
 }
 
-.life-line-payment-option span{
+.offday-payment-option span{
     display:flex;
     flex-direction:column;
     gap:3px;
 }
 
-.life-line-payment-option strong{
+.offday-payment-option strong{
     color:#4B636D;
     font-size:14px;
 }
 
-.life-line-payment-option small{
+.offday-payment-option small{
     color:#6b7280;
     font-size:12px;
     line-height:1.5;
 }
 
-.life-line-empty-box{
+.offday-empty-box{
     padding:45px 20px;
     border:1px dashed #d7d7d7;
     border-radius:10px;
@@ -227,7 +227,7 @@
     color: #4B636D;
     font-size:15px;
 }
-.life-line-summary-item{
+.offday-summary-item{
     display:flex;
     align-items:center;
     gap:16px;
@@ -235,11 +235,11 @@
     border-bottom:1px solid #efefef;
 }
 
-.life-line-summary-item:last-child{
+.offday-summary-item:last-child{
     border-bottom:none;
 }
 
-.life-line-summary-image{
+.offday-summary-image{
     width:78px;
     height:96px;
     border-radius:10px;
@@ -248,7 +248,7 @@
     flex-shrink:0;
 }
 
-.life-line-summary-image img{
+.offday-summary-image img{
     width:100%;
     height:100%;
     object-fit:cover;
@@ -256,16 +256,16 @@
     transition:transform .3s ease;
 }
 
-.life-line-summary-item:hover .life-line-summary-image img{
+.offday-summary-item:hover .offday-summary-image img{
     transform:scale(1.05);
 }
 
-.life-line-summary-details{
+.offday-summary-details{
     min-width: 0;
     flex:1;
 }
 
-.life-line-summary-details h4{
+.offday-summary-details h4{
     font-size:16px;
     font-weight:600;
     color: #4B636D;
@@ -275,26 +275,26 @@
     word-break:break-word;
 }
 
-.life-line-summary-details p{
+.offday-summary-details p{
     font-size:13px;
     color: #4B636D;
     margin-bottom:4px;
 }
 
-.life-line-summary-price{
+.offday-summary-price{
     font-size:17px;
     font-weight:600;
     color: #4B636D;
     white-space:nowrap;
 }
 
-.life-line-summary-total{
+.offday-summary-total{
     margin-top:24px;
     padding-top:22px;
     border-top:1px solid #e8e8e8;
 }
 
-.life-line-summary-row{
+.offday-summary-row{
     min-width: 0;
     display:flex;
     justify-content:space-between;
@@ -304,37 +304,37 @@
     color: #4B636D;
 }
 
-.life-line-summary-row:last-child{
+.offday-summary-row:last-child{
     margin-bottom:0;
 }
 
-.life-line-summary-row span:last-child{
+.offday-summary-row span:last-child{
     min-width: 0;
     overflow-wrap: anywhere;
     font-weight:500;
     color: #4B636D;
 }
 
-.life-line-summary-row span:first-child{
+.offday-summary-row span:first-child{
     min-width: 0;
     overflow-wrap: anywhere;
 }
 
-.life-line-subtotal-label{
+.offday-subtotal-label{
     display:flex;
     flex-direction:column;
     align-items:flex-start;
     gap:3px;
 }
 
-.life-line-subtotal-label small{
+.offday-subtotal-label small{
     color:#84939a;
     font-size:11px;
     font-weight:500;
     line-height:1.35;
 }
 
-.life-line-grand-total{
+.offday-grand-total{
     margin-top:18px;
     padding-top:18px;
     border-top:1px solid #ddd;
@@ -342,30 +342,30 @@
     font-weight:600;
 }
 
-.life-line-grand-total strong{
+.offday-grand-total strong{
     color:#4B636D;
 }
 
-.life-line-shipping-free{
+.offday-shipping-free{
     color:#1a8f3c !important;
     font-weight:600 !important;
 }
 
-.life-line-checkout-divider{
+.offday-checkout-divider{
     width:100%;
     height:1px;
     background:#ececec;
     margin:22px 0;
 }
 
-.life-line-payment-note{
+.offday-payment-note{
     margin-top:18px;
     font-size:13px;
     color: #4B636D;
     text-align:center;
     line-height:1.6;
 }
-.life-line-checkout-btn{
+.offday-checkout-btn{
     width:100%;
     height:52px;
     border:none;
@@ -378,22 +378,22 @@
     transition:background .25s ease,box-shadow .25s ease;
 }
 
-.life-line-checkout-btn:hover{
+.offday-checkout-btn:hover{
     background:#246D36;
     box-shadow:0 10px 24px rgba(139,47,69,.22);
 }
 
-.life-line-checkout-btn:active{
+.offday-checkout-btn:active{
     transform:scale(.99);
 }
 
-.life-line-checkout-btn:disabled{
+.offday-checkout-btn:disabled{
     background:#c7c7c7;
     cursor:not-allowed;
     box-shadow:none;
 }
 
-.life-line-loading{
+.offday-loading{
     display:flex;
     justify-content:center;
     align-items:center;
@@ -404,33 +404,33 @@
 
 }
 
-.life-line-summary-divider{
+.offday-summary-divider{
     height:1px;
     background:#e8e8e8;
     margin:18px 0;
 }
 
-.life-line-grand-total{
+.offday-grand-total{
     display:flex;
     justify-content:space-between;
     align-items:center;
 }
 
-.life-line-grand-total h3{
+.offday-grand-total h3{
     margin:0;
     font-size:18px;
     font-weight:600;
     color: #4B636D;
 }
 
-.life-line-grand-total small{
+.offday-grand-total small{
     display:block;
     margin-top:4px;
     color:#888;
     font-size:12px;
 }
 
-.life-line-grand-total h2{
+.offday-grand-total h2{
     margin:0;
     font-size:28px;
     font-weight:700;
@@ -440,11 +440,11 @@
 
 @media (max-width:1024px){
 
-    .life-line-checkout-wrapper{
+    .offday-checkout-wrapper{
         grid-template-columns:1fr;
     }
 
-    .life-line-checkout-right{
+    .offday-checkout-right{
         position:static;
     }
 
@@ -452,34 +452,34 @@
 
 @media (max-width:768px){
 
-    .life-line-checkout{
+    .offday-checkout{
         margin:24px auto;
         padding:0 16px;
     }
 
-    .life-line-checkout-title{
+    .offday-checkout-title{
         font-size:28px;
     }
 
-    .life-line-checkout-card{
+    .offday-checkout-card{
         padding:20px;
     }
 
-    .life-line-card-header{
+    .offday-card-header{
         flex-direction:column;
         align-items:flex-start;
         gap:16px;
     }
 
-    .life-line-add-address-btn{
+    .offday-add-address-btn{
         width:100%;
     }
 
-    .life-line-summary-item{
+    .offday-summary-item{
         align-items:flex-start;
     }
 
-    .life-line-summary-image{
+    .offday-summary-image{
         width:70px;
         height:90px;
     }
@@ -488,57 +488,57 @@
 
 @media (max-width:576px){
 
-    .life-line-checkout{
+    .offday-checkout{
         padding:0 12px;
     }
 
-    .life-line-checkout-title{
+    .offday-checkout-title{
         font-size:24px;
     }
 
-    .life-line-checkout-subtitle{
+    .offday-checkout-subtitle{
         font-size:14px;
     }
 
-    .life-line-checkout-card{
+    .offday-checkout-card{
         padding:16px;
         border-radius:10px;
     }
 
-    .life-line-address-card{
+    .offday-address-card{
         padding:14px;
     }
 
-    .life-line-summary-item{
+    .offday-summary-item{
         gap:12px;
     }
 
-    .life-line-summary-image{
+    .offday-summary-image{
         width:64px;
         height:82px;
     }
 
-    .life-line-summary-details h4{
+    .offday-summary-details h4{
         font-size:15px;
     }
 
-    .life-line-summary-details p{
+    .offday-summary-details p{
         font-size:12px;
     }
 
-    .life-line-summary-price{
+    .offday-summary-price{
         font-size:15px;
     }
 
-    .life-line-summary-row{
+    .offday-summary-row{
         font-size:14px;
     }
 
-    .life-line-grand-total{
+    .offday-grand-total{
         font-size:17px;
     }
 
-    .life-line-checkout-btn{
+    .offday-checkout-btn{
         height:48px;
         font-size:14px;
     }

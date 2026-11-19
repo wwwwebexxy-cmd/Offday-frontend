@@ -151,7 +151,7 @@ function Signup() {
 
                         <h1>Create Account</h1>
 
-                        <p>Create your life-line account and start shopping.</p>
+                        <p>Create your OFFDAY Collections account and start shopping.</p>
 
                     </div>
 

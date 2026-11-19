@@ -1,18 +1,19 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
-const SITE_URL = "https://lifelinemedsup.com";
-const DEFAULT_TITLE = "Lifeline Medical Supplies | Trust. Quality. Reliable supply.";
-const DEFAULT_DESCRIPTION = "Medical supplies, made easier to source. Contact Lifeline Medical Supplies for product availability and quotations.";
-const SHARE_IMAGE = `${SITE_URL}/lifeline-social-card.webp`;
+const configuredSiteUrl = String(import.meta.env.VITE_OFFDAY_PUBLIC_SITE_URL || "").trim().replace(/\/+$/, "");
+const DEFAULT_TITLE = "OFFDAY Collections — Made for Comfort";
+const DEFAULT_DESCRIPTION = "Elevated everyday streetwear and considered essentials from OFFDAY Collections.";
+const SHARE_IMAGE_PATH = "/offday/offday-logo.png";
 
 const routeMeta = [
     { match: /^\/$/, title: DEFAULT_TITLE, description: DEFAULT_DESCRIPTION },
-    { match: /^\/(shop|products)\/?$/, title: "Medical Supplies & Healthcare Products | Lifeline Medical Supplies", description: "Browse healthcare supplies and medical products from Lifeline Medical Supplies." },
-    { match: /^\/about\/?$/, title: "About Lifeline Medical Supplies", description: "Learn how Lifeline Medical Supplies helps organisations source dependable healthcare supplies." },
-    { match: /^\/offers\/?$/, title: "Medical Supply Offers | Lifeline Medical Supplies", description: "Explore current medical supply offers from Lifeline Medical Supplies." },
-    { match: /^\/contact\/?$/, title: "Contact Lifeline Medical Supplies", description: "Contact Lifeline Medical Supplies for product availability, quotations, and supply enquiries." },
-    { match: /^\/single\//, title: "Healthcare Product Details | Lifeline Medical Supplies", description: "View product information, variants, pricing, and availability from Lifeline Medical Supplies." },
+    { match: /^\/(shop|products)\/?$/, title: "Shop | OFFDAY Collections", description: "Explore relaxed fits and considered everyday essentials from OFFDAY Collections." },
+    { match: /^\/collections\//, title: "Collections | OFFDAY Collections", description: "Explore the OFFDAY DROPS, BASICS, ESSENTIALS and WINTER collections." },
+    { match: /^\/about\/?$/, title: "Our story | OFFDAY Collections", description: "Meet OFFDAY Collections: elevated everyday streetwear for the UAE." },
+    { match: /^\/contact\/?$|^\/help\//, title: "Help | OFFDAY Collections", description: "Find OFFDAY Collections contact, delivery, returns and store information." },
+    { match: /^\/offers\/?$/, title: "Offers | OFFDAY Collections", description: "Explore current offers from OFFDAY Collections." },
+    { match: /^\/single\//, title: "Product details | OFFDAY Collections", description: "View product information, price and availability from OFFDAY Collections." },
 ];
 
 function setMeta(attribute, value, content) {
@@ -34,17 +35,19 @@ function SeoHead() {
             title: DEFAULT_TITLE,
             description: DEFAULT_DESCRIPTION,
         };
-        const canonicalUrl = `${SITE_URL}${pathname === "/" ? "/" : pathname.replace(/\/$/, "")}`;
+        const siteUrl = configuredSiteUrl || window.location.origin;
+        const canonicalUrl = `${siteUrl}${pathname === "/" ? "/" : pathname.replace(/\/$/, "")}`;
+        const shareImage = `${siteUrl}${SHARE_IMAGE_PATH}`;
 
         document.title = metadata.title;
         setMeta("name", "description", metadata.description);
         setMeta("property", "og:title", metadata.title);
         setMeta("property", "og:description", metadata.description);
         setMeta("property", "og:url", canonicalUrl);
-        setMeta("property", "og:image", SHARE_IMAGE);
+        setMeta("property", "og:image", shareImage);
         setMeta("name", "twitter:title", metadata.title);
         setMeta("name", "twitter:description", metadata.description);
-        setMeta("name", "twitter:image", SHARE_IMAGE);
+        setMeta("name", "twitter:image", shareImage);
 
         let canonical = document.head.querySelector("link[rel=canonical]");
         if (!canonical) {

@@ -46,6 +46,6 @@ body{
   min-height: 35vh;
   display: grid;
   place-items: center;
-  color: var(--lifeline-navy, #15365b);
+  color: var(--offday-black, #111111);
   font-weight: 600;
 }
