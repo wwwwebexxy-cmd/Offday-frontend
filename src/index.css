@@ -1,0 +1,92 @@
+:root {
+  /* ===== LIFE-LINE BRAND DESIGN TOKENS ===== */
+
+  /* Lifeline Medical Supplies brand palette */
+  --lifeline-navy: #15365B;
+  --lifeline-green: #2F8D45;
+  --lifeline-slate: #53616D;
+  --lifeline-soft-grey: #F3F6F8;
+  --lifeline-white: #FFFFFF;
+
+  /* Compatibility aliases used by existing storefront components */
+  --primary-orange: var(--lifeline-green);
+  --primary-orange-hover: #246D36;
+  --primary-orange-light: #EAF4ED;
+  --primary-orange-bg: rgba(47, 141, 69, 0.08);
+
+  /* Slate Colors */
+  --primary-slate: var(--lifeline-navy);
+  --primary-slate-hover: #102B49;
+  --primary-slate-light: var(--lifeline-slate);
+  --primary-slate-muted: #7A8790;
+
+  /* Background & Surfaces */
+  --background: var(--lifeline-white);
+  --surface-card: var(--lifeline-white);
+  --surface-elevated: var(--lifeline-white);
+
+  /* Text */
+  --text-primary: var(--lifeline-navy);
+  --text-secondary: var(--lifeline-slate);
+  --text-muted: #7A8790;
+  --text-on-dark: var(--lifeline-white);
+
+  /* Borders */
+  --border-color: #D9E2E8;
+  --border-light: #E8EEF1;
+
+  /* Misc */
+  --shadow-sm: 0 2px 8px rgba(21, 54, 91, 0.06);
+  --shadow-md: 0 8px 24px rgba(21, 54, 91, 0.08);
+  --shadow-lg: 0 16px 40px rgba(21, 54, 91, 0.10);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--background);
+  color: var(--text-primary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection highlight using brand color */
+::selection {
+  background: rgba(47, 141, 69, 0.2);
+  color: #15365B;
+}
+
+/* --- Global Skeleton Loading --- */
+.skeleton {
+    background: #e0e0e0;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 4px;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+.skeleton-text {
+    height: 14px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+}
