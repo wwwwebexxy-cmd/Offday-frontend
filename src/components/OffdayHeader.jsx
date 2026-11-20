@@ -88,7 +88,8 @@ function OffdayHeader() {
                 )}
             </div>
 
-            <nav className="offday-desktop-nav" aria-label="Collections">
+            <nav className="offday-desktop-nav" aria-label="Main navigation">
+                <NavLink to="/" end>Home</NavLink>
                 {collections.map((collection) => (
                     <NavLink key={collection.id ?? collectionSlug(collection.name)} to={`/collections/${collectionSlug(collection.name)}`}>
                         {collection.name}
@@ -98,6 +99,9 @@ function OffdayHeader() {
 
             {menuOpen && (
                 <nav className="offday-mobile-menu" aria-label="Main menu">
+                    <NavLink to="/" end>
+                        <span>Home</span><span aria-hidden="true">↗</span>
+                    </NavLink>
                     {collections.map((collection) => (
                         <NavLink key={collection.id ?? collectionSlug(collection.name)} to={`/collections/${collectionSlug(collection.name)}`}>
                             <span>{collection.name}</span><span aria-hidden="true">↗</span>
