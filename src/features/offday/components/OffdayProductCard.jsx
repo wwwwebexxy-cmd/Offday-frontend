@@ -6,6 +6,7 @@ import { hasAuthSession } from "../../auth/authUtils";
 import { getProductDetailsPath } from "../../../utils/productUrl";
 import { getImageUrl } from "../../../utils/imageUrl";
 import showToast from "../../../utils/toast";
+import "./offdayProductCard.css";
 
 function getVariant(product) {
     const variants = Array.isArray(product?.variants) ? product.variants : [];
@@ -97,7 +98,7 @@ function OffdayProductCard({ product }) {
                     onClick={quickAdd}
                     disabled={!inStock}
                 >
-                    {inStock ? "Quick add +" : "Out of stock"}
+                    {inStock ? "QUICK ADD +" : "OUT OF STOCK"}
                 </button>
             </div>
         </article>

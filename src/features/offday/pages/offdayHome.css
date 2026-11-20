@@ -247,137 +247,9 @@
     padding-top: 0;
 }
 
-.offday-product-grid {
-    display: grid;
+.offday-home-products {
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 34px 14px;
-}
-
-.offday-product-card {
-    min-width: 0;
-}
-
-.offday-product-image {
-    position: relative;
-    display: block;
-    aspect-ratio: 3 / 4;
-    overflow: hidden;
-    background: var(--offday-image-bg);
-}
-
-.offday-product-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 400ms ease;
-}
-
-.offday-product-image:hover img {
-    transform: scale(1.035);
-}
-
-.offday-product-image-empty {
-    display: grid;
-    height: 100%;
-    place-items: center;
-    color: #686860;
-    font-family: var(--offday-display);
-    font-size: 18px;
-    letter-spacing: 0.18em;
-}
-
-.offday-product-badge {
-    position: absolute;
-    z-index: 1;
-    top: 12px;
-    left: 12px;
-    padding: 6px 9px;
-    background: var(--offday-lime);
-    color: var(--offday-black);
-    font-size: 8px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-}
-
-.offday-product-copy {
-    padding-top: 11px;
-}
-
-.offday-product-name-row {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 8px;
-}
-
-.offday-product-name {
-    font-size: 12px;
-    font-weight: 600;
-    line-height: 1.4;
-}
-
-.offday-product-price {
-    flex: 0 0 auto;
-    font-size: 12px;
-    font-weight: 500;
-    text-align: right;
-    white-space: nowrap;
-}
-
-.offday-product-copy p {
-    margin: 3px 0 0;
-    color: var(--offday-muted);
-    font-size: 10px;
-}
-
-.offday-quick-add {
-    display: inline-flex;
-    min-height: 34px;
-    align-items: center;
-    margin-top: 10px;
-    padding: 0 12px;
-    border: 1px solid var(--offday-black);
-    background: transparent;
-    color: var(--offday-black);
-    cursor: pointer;
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-}
-
-@media (min-width: 851px) {
-    .offday-quick-add {
-        opacity: 0;
-        transition: opacity 160ms ease;
-    }
-
-    .offday-product-card:hover .offday-quick-add,
-    .offday-product-card:focus-within .offday-quick-add {
-        opacity: 1;
-    }
-}
-
-.offday-quick-add:hover:not(:disabled) {
-    background: var(--offday-black);
-    color: var(--offday-white);
-}
-
-.offday-quick-add:disabled {
-    cursor: not-allowed;
-    opacity: 0.55;
-}
-
-.offday-product-skeleton {
-    aspect-ratio: 3 / 4;
-    background: linear-gradient(105deg, #e7e5dc 20%, #f5f3ec 48%, #e7e5dc 76%);
-    background-size: 200% 100%;
-    animation: offday-skeleton 1.4s ease infinite;
-}
-
-@keyframes offday-skeleton {
-    to { background-position: -200% 0; }
 }
 
 .offday-empty-products {
@@ -673,14 +545,9 @@
         padding: 16px;
     }
 
-    .offday-product-grid {
+    .offday-home-products {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 30px 10px;
-    }
-
-    .offday-quick-add {
-        min-height: 38px;
-        padding: 0 10px;
     }
 
     .offday-story-image {
