@@ -912,7 +912,7 @@ function Single_product() {
                     <div className="main-image-wrapper">
                         <div className="main-image" style={{ cursor: 'pointer' }}>
                             <button className="wishlist-icon" onClick={(e) => { e.stopPropagation(); addToWishlist(); }}>
-                                {isWishlisted ? <FaHeart color="#fd0707ff" /> : <FaRegHeart color="#4B636D" />}
+                                {isWishlisted ? <FaHeart color="var(--offday-black, #111111)" /> : <FaRegHeart color="var(--offday-muted, #686860)" />}
                             </button>
                             <button
                                 type="button"
@@ -945,8 +945,8 @@ function Single_product() {
                     {data.current_viewers_count != null && (
                         <div className="viewers-count-badge">
                             <div className="eye-wrapper">
-                                <AiOutlineEye size={18} color="#007185" />
-                                <span><strong style={{ color: "#007185" }}>{data.current_viewers_count} person{data.current_viewers_count > 1 ? "s" : ""}</strong> is watching this product now.</span>
+                                <AiOutlineEye size={18} color="var(--offday-black, #111111)" />
+                                <span><strong style={{ color: "var(--offday-black, #111111)" }}>{data.current_viewers_count} person{data.current_viewers_count > 1 ? "s" : ""}</strong> is watching this product now.</span>
                             </div>
                             <span className="close-badge-btn">×</span>
                         </div>
@@ -979,7 +979,7 @@ function Single_product() {
                     <h1>{productHeading}</h1>
 
                     {colors.length > 0 && <div className="option-block color-selection-block">
-                        <h4>Color: <span className="selected-option-label" style={{ fontWeight: 'bold', color: '#111' }}>{selectedColor?.name || "Select color"}</span></h4>
+                        <h4>Color: <span className="selected-option-label" style={{ fontWeight: 'bold', color: 'var(--offday-black, #111111)' }}>{selectedColor?.name || "Select color"}</span></h4>
                         <div className="colors image-colors">
                             {colors.map((color) => {
                                 const variant = data.variants.find(item => item.color?.id === color.id);
@@ -1030,8 +1030,8 @@ function Single_product() {
                         </div>
                     )}
 
-                    <div className="product-price-section" style={{ margin: '20px 0', padding: '15px 0', borderTop: '1px solid #eee', borderBottom: '1px solid #eee' }}>
-                        <div style={{ fontSize: '18px', fontWeight: 'bold', color: '#333', marginBottom: '8px' }}>Price:</div>
+                    <div className="product-price-section" style={{ margin: '20px 0', padding: '15px 0', borderTop: '1px solid var(--offday-divider, #D6D4CA)', borderBottom: '1px solid var(--offday-divider, #D6D4CA)' }}>
+                        <div style={{ fontSize: '18px', fontWeight: 'bold', color: 'var(--offday-black, #111111)', marginBottom: '8px' }}>Price:</div>
                         {(() => {
                             let itemPriceInfo = selectedVariant?.price_type === 'single'
                                 ? selectedVariant
@@ -1049,12 +1049,12 @@ function Single_product() {
                                 <div>
                                     <SavingsLabel originalPrice={originalPrice} currentPrice={finalPrice} offer={data?.offer} offerDiscountType={data?.offer_discount_type} offerDiscountValue={data?.offer_discount_value} />
                                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                                        <span style={{ fontFamily: 'Inter, Arial, sans-serif', fontSize: '28px', fontWeight: '800', color: '#B12704' }}>
+                                        <span style={{ fontFamily: 'Inter, Arial, sans-serif', fontSize: '28px', fontWeight: '800', color: 'var(--offday-black, #111111)' }}>
                                             <DirhamAmount value={finalPrice} />
                                         </span>
                                         {originalPrice > finalPrice && (
                                             <>
-                                                <span style={{ fontFamily: 'Inter, Arial, sans-serif', fontSize: '16px', color: '#565959', textDecoration: 'line-through' }}>
+                                                <span style={{ fontFamily: 'Inter, Arial, sans-serif', fontSize: '16px', color: 'var(--offday-muted, #686860)', textDecoration: 'line-through' }}>
                                                     <DirhamAmount value={originalPrice} />
                                                 </span>
                                             </>
@@ -1066,7 +1066,7 @@ function Single_product() {
                                         </div>
                                     )}
                                     {appliedCoupon && (
-                                        <div style={{ color: 'green', fontSize: '14px', marginTop: '5px', fontWeight: 'bold' }}>
+                                        <div style={{ color: 'var(--offday-black, #111111)', fontSize: '14px', marginTop: '5px', fontWeight: 'bold' }}>
                                             {String(appliedCoupon.promotion_type || "").toUpperCase() === "WELCOME_BONUS"
                                                 ? "Welcome Bonus applied. Final discount will be calculated by the server."
                                                 : `Coupon applied${appliedCoupon.coupon_code ? ` (${appliedCoupon.coupon_code})` : ""}. Final discount will be calculated by the server.`}
@@ -1140,16 +1140,16 @@ function Single_product() {
                     <div className="stock-status">
                         {selectedVariant?.price_type === 'single' ? (
                             (availableStock <= 0 ? (
-                                <span className="stock-out" style={{ fontSize: '14px', color: '#b12704' }}>Out of stock</span>
+                                <span className="stock-out" style={{ fontSize: '14px', color: 'var(--offday-muted, #686860)' }}>Out of stock</span>
                             ) : (
-                                <span className="stock" style={{ fontSize: '14px', color: '#007600' }}>In stock</span>
+                                <span className="stock" style={{ fontSize: '14px', color: 'var(--offday-black, #111111)' }}>In stock</span>
                             ))
                         ) : (!selectedSizeVariant ? (
-                            <span className="stock" style={{ fontSize: '14px', color: '#555' }}>Please select options to view stock</span>
+                            <span className="stock" style={{ fontSize: '14px', color: 'var(--offday-muted, #686860)' }}>Please select options to view stock</span>
                         ) : availableStock <= 0 ? (
-                            <span className="stock-out" style={{ fontSize: '14px', color: '#b12704' }}>Out of stock</span>
+                            <span className="stock-out" style={{ fontSize: '14px', color: 'var(--offday-muted, #686860)' }}>Out of stock</span>
                         ) : (
-                            <span className="stock" style={{ fontSize: '14px', color: '#007600' }}>In stock</span>
+                            <span className="stock" style={{ fontSize: '14px', color: 'var(--offday-black, #111111)' }}>In stock</span>
                         ))}
                     </div>
 
@@ -1165,7 +1165,7 @@ function Single_product() {
                         <>
                             <hr className="divider" />
                             <div className="warranty-section">
-                                <AiOutlineCheckCircle size={20} color="#555" />
+                                <AiOutlineCheckCircle size={20} color="var(--offday-muted, #686860)" />
                                 <span>{data.warranty_info}</span>
                             </div>
                             <hr className="divider" />
@@ -1173,7 +1173,7 @@ function Single_product() {
                     )}
 
                     <div className="secure-transaction">
-                        <AiOutlineLock size={20} color="#555" />
+                        <AiOutlineLock size={20} color="var(--offday-muted, #686860)" />
                         <span>Secure Transaction</span>
                     </div>
                 </div>
