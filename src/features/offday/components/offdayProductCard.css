@@ -127,24 +127,19 @@
     font-size: 9px;
     font-weight: 700;
     letter-spacing: 0.1em;
-    opacity: 1;
-    transform: translateY(0);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(6px);
     transition: opacity 160ms ease, transform 160ms ease, background-color 160ms ease, color 160ms ease;
 }
 
-@media (min-width: 851px) and (hover: hover) {
-    .offday-quick-add {
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(6px);
-    }
-
-    .offday-product-media:hover .offday-quick-add,
-    .offday-product-media:focus-within .offday-quick-add {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-    }
+.offday-product-media:hover .offday-quick-add,
+.offday-product-media:focus-within .offday-quick-add {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
 }
 
 .offday-quick-add:hover:not(:disabled) {
@@ -155,6 +150,10 @@
 
 .offday-quick-add:disabled {
     cursor: not-allowed;
+}
+
+.offday-product-media:hover .offday-quick-add:disabled,
+.offday-product-media:focus-within .offday-quick-add:disabled {
     opacity: 0.55;
 }
 
