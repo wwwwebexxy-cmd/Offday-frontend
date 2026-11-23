@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import Homepage_Query from "../../home/queries/Homepage_Query";
 import HeroSideBanner_Query from "../../home/queries/HeroSideBanner_Query";
@@ -27,7 +27,8 @@ function OffdayHome() {
         [homepageData.hero_banners],
     );
     const [heroIndex, setHeroIndex] = useState(0);
-    const [heroAutoplay, setHeroAutoplay] = useState(true);
+    const [heroPaused, setHeroPaused] = useState(false);
+    const heroPointerStartX = useRef(null);
     const heroBanner = heroBanners[heroIndex] || heroBanners[0] || null;
     const heroImage = heroBanner?.image ? getImageUrl(heroBanner.image) : "";
     const storyBanner = Array.isArray(heroSideBanners)
@@ -48,12 +49,35 @@ function OffdayHome() {
     }, [heroBanners.length, heroIndex]);
 
     useEffect(() => {
-        if (heroBanners.length <= 1 || !heroAutoplay || window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return undefined;
+        if (heroBanners.length <= 1 || heroPaused || window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return undefined;
         const timer = window.setTimeout(() => {
             setHeroIndex((currentIndex) => (currentIndex + 1) % heroBanners.length);
         }, 6000);
         return () => window.clearTimeout(timer);
-    }, [heroBanners.length, heroAutoplay, heroIndex]);
+    }, [heroBanners.length, heroPaused, heroIndex]);
+
+    const handleHeroPointerDown = (event) => {
+        if (event.pointerType === "mouse") return;
+        heroPointerStartX.current = event.clientX;
+        setHeroPaused(true);
+        event.currentTarget.setPointerCapture?.(event.pointerId);
+    };
+
+    const handleHeroPointerUp = (event) => {
+        if (event.pointerType === "mouse") return;
+        const startX = heroPointerStartX.current;
+        heroPointerStartX.current = null;
+        if (startX !== null && Math.abs(event.clientX - startX) > 40 && heroBanners.length > 1) {
+            const direction = event.clientX < startX ? 1 : -1;
+            setHeroIndex((currentIndex) => (currentIndex + direction + heroBanners.length) % heroBanners.length);
+        }
+        setHeroPaused(false);
+    };
+
+    const handleHeroPointerCancel = () => {
+        heroPointerStartX.current = null;
+        setHeroPaused(false);
+    };
 
     const submitNewsletter = async (event) => {
         event.preventDefault();
@@ -84,7 +108,16 @@ function OffdayHome() {
 
     return (
         <main className="offday-home">
-            <section className="offday-hero" aria-label="Homepage hero images" aria-roledescription="carousel">
+            <section
+                className="offday-hero"
+                aria-label="Homepage hero images"
+                aria-roledescription="carousel"
+                onPointerEnter={(event) => { if (event.pointerType === "mouse") setHeroPaused(true); }}
+                onPointerLeave={(event) => { if (event.pointerType === "mouse") setHeroPaused(false); }}
+                onPointerDown={handleHeroPointerDown}
+                onPointerUp={handleHeroPointerUp}
+                onPointerCancel={handleHeroPointerCancel}
+            >
                 {heroImage && <img key={heroBanner?.id ?? heroIndex} className="offday-hero-image" src={heroImage} alt={heroBanner?.title || heroBanner?.subtitle || "OFFDAY streetwear, worn for everyday"} fetchPriority="high" />}
                 <div className="offday-hero-copy">
                     <p className="offday-eyebrow">{heroBanner?.subtitle || "Elevated everyday streetwear"}</p>
@@ -94,7 +127,6 @@ function OffdayHome() {
                 </div>
                 {heroBanners.length > 1 && (
                     <div className="offday-hero-controls" role="group" aria-label="Hero image controls">
-                        <button className="offday-hero-arrow" type="button" aria-label="Previous hero image" onClick={() => setHeroIndex((heroIndex - 1 + heroBanners.length) % heroBanners.length)}>‹</button>
                         <div className="offday-hero-dots" aria-label={`Hero image ${heroIndex + 1} of ${heroBanners.length}`}>
                             {heroBanners.map((banner, index) => (
                                 <button
@@ -107,8 +139,6 @@ function OffdayHome() {
                                 />
                             ))}
                         </div>
-                        <button className="offday-hero-arrow" type="button" aria-label="Next hero image" onClick={() => setHeroIndex((heroIndex + 1) % heroBanners.length)}>›</button>
-                        <button className="offday-hero-autoplay" type="button" aria-label={heroAutoplay ? "Pause hero slideshow" : "Play hero slideshow"} aria-pressed={!heroAutoplay} onClick={() => setHeroAutoplay((playing) => !playing)}>{heroAutoplay ? "Pause" : "Play"}</button>
                     </div>
                 )}
             </section>
