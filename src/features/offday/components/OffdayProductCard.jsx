@@ -51,7 +51,7 @@ function OffdayProductCard({ product }) {
     const price = getProductPrice(product, variant, unit);
     const inStock = getProductStock(product, variant, unit);
     const badge = product?.marketing_highlights?.[0]?.text || product?.key_features?.[0] || "";
-    const details = product?.subcategory?.name || product?.description?.split(/[.\n]/)[0] || "Everyday fit";
+    const details = product?.description?.split(/[.\n]/)[0] || product?.subcategory?.name || "Everyday fit";
     const productPath = getProductDetailsPath(product);
 
     const quickAdd = async (event) => {
