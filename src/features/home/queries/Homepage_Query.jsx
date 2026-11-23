@@ -6,7 +6,7 @@ function Homepage_Query(options = {}) {
         queryKey: ["homepage"],
         queryFn: getHomepage,
         enabled: options.enabled ?? true,
-        staleTime: 1000 * 60 * 5,
+        staleTime: options.staleTime ?? 1000 * 60 * 5,
     });
 }
 

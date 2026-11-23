@@ -11,7 +11,7 @@ const fields = [
     { name: "subtitle", label: "Subtitle" },
     { name: "title", label: "Title" },
     { name: "description", label: "Description", type: "textarea" },
-    { name: "image", label: "Image", required: true, type: "image" },
+    { name: "image", label: "Homepage hero image", required: true, type: "image" },
     { name: "button_text", label: "Button text" },
     { name: "display_order", label: "Display order", required: true, type: "integer", min: 0 },
     { name: "is_active", label: "Is active", type: "boolean" },
@@ -78,7 +78,7 @@ export default function HeroBannerEditor({ schema = {} }) {
 
     if (loading) return <div className="admin-page"><LoadingState label="Loading hero banner…" /></div>;
     return <div className="hero-banner-editor-page">
-        <div className="hero-editor-heading"><div><button type="button" className="hero-back-link" onClick={() => navigate("/admin-dashboard/hero-banners")}><FiArrowLeft /> Hero banners</button><h2>Hero banners</h2></div><div className="hero-breadcrumb">Home&nbsp; / &nbsp;Myapp&nbsp; / &nbsp;Hero banners&nbsp; / &nbsp;{editing ? "Edit hero banner" : "Add hero banner"}</div></div>
+        <div className="hero-editor-heading"><div><button type="button" className="hero-back-link" onClick={() => navigate("/admin-dashboard/hero-banners")}><FiArrowLeft /> Homepage hero images</button><h2>Homepage hero image</h2></div><div className="hero-breadcrumb">Home&nbsp; / &nbsp;Myapp&nbsp; / &nbsp;Homepage hero image&nbsp; / &nbsp;{editing ? "Edit image" : "Add image"}</div></div>
         <div className="hero-editor-layout"><section className="hero-editor-card"><div className="hero-editor-form">{fields.map((field) => { const value = values[field.name]; const schemaField = schemaFields.find((item) => (item.name || item.key) === field.name) || field; const type = field.type || schemaField.type || "text"; return <label className={`hero-editor-field ${errors[field.name] ? "has-error" : ""}`} key={field.name}><span>{field.label}{field.required && <em> *</em>}</span>{type === "boolean" ? <input type="checkbox" checked={Boolean(value)} onChange={(event) => setValue(field.name, event.target.checked)} /> : type === "textarea" ? <textarea rows="7" value={value || ""} onChange={(event) => setValue(field.name, event.target.value)} /> : type === "image" ? <><input type="file" accept="image/*" onChange={(event) => setValue(field.name, event.target.files?.[0] || null)} />{value && <img className="hero-upload-preview" src={value instanceof File ? URL.createObjectURL(value) : value} alt="Hero preview" />}</> : <input type={type === "integer" || type === "number" ? "number" : "text"} min={field.min} value={value ?? ""} onChange={(event) => setValue(field.name, event.target.value)} />}{errors[field.name] && <small>{errors[field.name]}</small>}</label>; })}</div>{requestError && <p className="hero-editor-error">{requestError}</p>}</section><aside className="hero-editor-actions"><button className="hero-save-button" onClick={() => save("list")} disabled={saving}><FiSave /> Save</button><button className="hero-secondary-button" onClick={() => save("another")} disabled={saving}>Save and add another</button><button className="hero-secondary-button" onClick={() => save("continue")} disabled={saving}>Save and continue editing</button></aside></div>
     </div>;
 }

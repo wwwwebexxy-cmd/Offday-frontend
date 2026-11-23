@@ -78,20 +78,15 @@ function OffdayProductCard({ product }) {
 
     return (
         <article className="offday-product-card">
-            <Link className="offday-product-image" to={productPath} aria-label={`View ${product.name}`}>
-                {badge && <span className="offday-product-badge">{badge}</span>}
-                {image ? (
-                    <img src={getImageUrl(image)} alt={product.name} loading="lazy" decoding="async" />
-                ) : (
-                    <span className="offday-product-image-empty" aria-hidden="true">OFFDAY</span>
-                )}
-            </Link>
-            <div className="offday-product-copy">
-                <div className="offday-product-name-row">
-                    <Link className="offday-product-name" to={productPath}>{product.name}</Link>
-                    <span className="offday-product-price">{price === null ? "Price on request" : `AED ${Math.round(Number(price))}`}</span>
-                </div>
-                <p>{details}</p>
+            <div className="offday-product-media">
+                <Link className="offday-product-image" to={productPath} aria-label={`View ${product.name}`}>
+                    {badge && <span className="offday-product-badge">{badge}</span>}
+                    {image ? (
+                        <img src={getImageUrl(image)} alt={product.name} loading="lazy" decoding="async" />
+                    ) : (
+                        <span className="offday-product-image-empty" aria-hidden="true">OFFDAY</span>
+                    )}
+                </Link>
                 <button
                     className="offday-quick-add"
                     type="button"
@@ -100,6 +95,13 @@ function OffdayProductCard({ product }) {
                 >
                     {inStock ? "QUICK ADD +" : "OUT OF STOCK"}
                 </button>
+            </div>
+            <div className="offday-product-copy">
+                <div className="offday-product-name-row">
+                    <Link className="offday-product-name" to={productPath}>{product.name}</Link>
+                    <span className="offday-product-price">{price === null ? "Price on request" : `AED ${Math.round(Number(price))}`}</span>
+                </div>
+                <p>{details}</p>
             </div>
         </article>
     );

@@ -49,9 +49,9 @@ const resources = {
     "user-profiles": { label: "User Profiles", group: "Customers", fields: ["user", "phone", "date_of_birth", "gender"], columns: ["user", "phone", "date_of_birth", "gender"] },
     orders: { label: "Orders", group: "Orders", fields: ["user", "address", "customer_name", "subtotal", "discount_amount", "shipping_charge", "total_amount", "payment_status", "status", "created_at"], columns: ["customer_name", "total_amount", "payment_status", "status", "created_at"] },
     "order-items": { label: "Order Items", group: "Orders", fields: ["order", "product", "color", "unit", "quantity", "original_price", "variant_unit", "discount_amount", "price", "total_price"], columns: ["order", "product", "quantity", "price", "total_price"] },
-    "hero-banners": { label: "Hero Banners", group: "Marketing", fields: ["subtitle", "title", "description", "image", "button_text", "display_order", "is_active"], columns: ["subtitle", "title", "button_text", "display_order", "is_active"] },
-    "promo-banners": { label: "Promotional Banners", group: "Marketing", fields: ["image", "link", "is_active"], columns: ["image", "link", "is_active"] },
-    "hero-side-banners": { label: "Hero Side Banners", group: "Marketing", fields: ["image", "link", "is_active"], columns: ["image", "link", "is_active"] },
+    "hero-banners": { label: "Homepage Hero Images", group: "Marketing", fields: ["subtitle", "title", "description", "image", "button_text", "display_order", "is_active"], columns: ["image", "subtitle", "title", "button_text", "display_order", "is_active"] },
+    "promo-banners": { label: "Homepage Wide Banner", group: "Marketing", fields: ["image", "link", "is_active"], columns: ["image", "link", "is_active"] },
+    "hero-side-banners": { label: "Homepage Story Image", group: "Marketing", fields: ["image", "link", "is_active"], columns: ["image", "link", "is_active"] },
     "trust-benefits": { label: "Trust & Benefits", itemLabel: "Benefit", group: "Marketing", fields: ["key", "title", "description", "icon_key", "display_order", "is_active"], columns: ["display_order", "key", "title", "icon_key", "is_active"] },
     coupons: { label: "Coupons", group: "Marketing", fields: ["code", "applicability_type", "target_name", "discount_type", "discount_value", "start_date", "end_date", "is_active"], columns: ["code", "applicability_type", "target_name", "discount_type", "discount_value", "start_date", "end_date", "is_active", "product", "category"] },
     "welcome-bonuses": { label: "Welcome Bonuses", group: "Dashboard", fields: [], columns: [] },
@@ -60,7 +60,7 @@ const resources = {
     "token-blacklist/blacklisted-tokens": { label: "Blacklisted Tokens", group: "Token Blacklist", fields: [], columns: [] },
 };
 
-const DISABLED_ADMIN_RESOURCES = new Set(["promo-banners", "hero-side-banners"]);
+const DISABLED_ADMIN_RESOURCES = new Set();
 
 const navGroups = [
     { title: "Workspace", items: [{ key: "overview", label: "Overview", icon: FiGrid }] },

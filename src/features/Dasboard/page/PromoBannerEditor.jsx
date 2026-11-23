@@ -8,7 +8,7 @@ import "../styles/HeroBannerEditor.css";
 
 const emptyBanner = { image: null, link: "", is_active: true };
 const fields = [
-    { name: "image", label: "Image", required: true, type: "image", help: "The promotional banner image" },
+    { name: "image", label: "Homepage wide banner image", required: true, type: "image", help: "Shown in the OWN YOUR OFFDAY section. Only the first active image is used." },
     { name: "link", label: "Link", type: "text", help: "A URL where the user should be redirected if they click the banner" },
     { name: "is_active", label: "Is active", type: "boolean", help: "To easily turn individual banners on or off" },
 ];
@@ -54,7 +54,7 @@ export default function PromoBannerEditor() {
 
     if (loading) return <div className="admin-page"><LoadingState label="Loading promotional banner..." /></div>;
     return <div className="hero-banner-editor-page">
-        <div className="hero-editor-heading"><div><button type="button" className="hero-back-link" onClick={() => navigate("/admin-dashboard/promo-banners")}><FiArrowLeft /> Promo banners</button><h2>Promo banners</h2></div><div className="hero-breadcrumb">Home&nbsp; / &nbsp;Myapp&nbsp; / &nbsp;Promo banners&nbsp; / &nbsp;{editing ? "Edit promo banner" : "Add promo banner"}</div></div>
+        <div className="hero-editor-heading"><div><button type="button" className="hero-back-link" onClick={() => navigate("/admin-dashboard/promo-banners")}><FiArrowLeft /> Homepage wide banner</button><h2>Homepage wide banner</h2></div><div className="hero-breadcrumb">Home&nbsp; / &nbsp;Myapp&nbsp; / &nbsp;Homepage wide banner&nbsp; / &nbsp;{editing ? "Edit image" : "Add image"}</div></div>
         <div className="hero-editor-layout"><section className="hero-editor-card"><div className="hero-editor-form">{fields.map((field) => { const value = values[field.name]; return <label className="hero-editor-field" key={field.name}><span>{field.label}{field.required && <em> *</em>}</span>{field.type === "boolean" ? <input type="checkbox" checked={Boolean(value)} onChange={(event) => setValue(field.name, event.target.checked)} /> : field.type === "image" ? <><input type="file" accept="image/*" onChange={(event) => setValue(field.name, event.target.files?.[0] || null)} />{value && <img className="hero-upload-preview" src={value instanceof File ? URL.createObjectURL(value) : value} alt="Promo preview" />}</> : <input type="text" value={value ?? ""} onChange={(event) => setValue(field.name, event.target.value)} />}{field.help && <small className="hero-field-help">{field.help}</small>}{errors[field.name] && <small>{errors[field.name]}</small>}</label>; })}</div>{requestError && <p className="hero-editor-error">{requestError}</p>}</section><aside className="hero-editor-actions"><button className="hero-save-button" onClick={() => save("list")} disabled={saving}><FiSave /> Save</button><button className="hero-secondary-button" onClick={() => save("another")} disabled={saving}>Save and add another</button><button className="hero-secondary-button" onClick={() => save("continue")} disabled={saving}>Save and continue editing</button></aside></div>
     </div>;
 }

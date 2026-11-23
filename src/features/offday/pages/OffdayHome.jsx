@@ -1,6 +1,8 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import Homepage_Query from "../../home/queries/Homepage_Query";
+import HeroSideBanner_Query from "../../home/queries/HeroSideBanner_Query";
+import PromoBanners_Query from "../../home/queries/PromoBanners_Query";
 import Product_Query from "../../sale/queries/Product_Query";
 import client from "../../../lib/ApiClient";
 import showToast from "../../../utils/toast";
@@ -9,24 +11,49 @@ import { collectionSlug, getCollections } from "../collections";
 import OffdayProductCard from "../components/OffdayProductCard";
 import "./offdayHome.css";
 
-const categoryFallbacks = {
-    "offday-drops": "/offday/graphic-tee-front.jpeg",
-    "offday-basics": "/offday/oversized-tee.jpeg",
-    "offday-essentials": "/offday/graphic-tee-street.jpeg",
-    "offday-winter-collections": "/offday/oversized-tee.jpeg",
-};
-
 function OffdayHome() {
-    const { data: homepageData = {}, isLoading, isError, error, refetch } = Homepage_Query();
+    const { data: homepageData = {}, isLoading, isError, error, refetch } = Homepage_Query({ staleTime: 0 });
+    const { data: heroSideBanners = [] } = HeroSideBanner_Query({ staleTime: 0 });
+    const { data: promoBanners = [] } = PromoBanners_Query({ staleTime: 0 });
     const collections = useMemo(() => getCollections(homepageData.categories), [homepageData.categories]);
     const drops = collections.find((collection) => collectionSlug(collection.name) === "offday-drops");
     const featuredFilter = drops?.id ? { category: drops.id, page_size: 4, sort: "new" } : {};
     const { data: productPage, isLoading: productsLoading } = Product_Query(featuredFilter, { enabled: Boolean(drops?.id) });
     const products = productPage?.results || [];
+    const heroBanners = useMemo(
+        () => (Array.isArray(homepageData.hero_banners)
+            ? homepageData.hero_banners.filter((banner) => banner?.image)
+            : []),
+        [homepageData.hero_banners],
+    );
+    const [heroIndex, setHeroIndex] = useState(0);
+    const [heroAutoplay, setHeroAutoplay] = useState(true);
+    const heroBanner = heroBanners[heroIndex] || heroBanners[0] || null;
+    const heroImage = heroBanner?.image ? getImageUrl(heroBanner.image) : "";
+    const storyBanner = Array.isArray(heroSideBanners)
+        ? heroSideBanners.find((banner) => banner?.image)
+        : null;
+    const storyImage = storyBanner?.image ? getImageUrl(storyBanner.image) : "";
+    const wideBanner = Array.isArray(promoBanners)
+        ? promoBanners.find((banner) => banner?.image)
+        : null;
+    const wideBannerImage = wideBanner?.image ? getImageUrl(wideBanner.image) : "";
     const [email, setEmail] = useState("");
     const [consent, setConsent] = useState(false);
     const [submitting, setSubmitting] = useState(false);
     const [submitted, setSubmitted] = useState(false);
+
+    useEffect(() => {
+        if (heroIndex >= heroBanners.length) setHeroIndex(0);
+    }, [heroBanners.length, heroIndex]);
+
+    useEffect(() => {
+        if (heroBanners.length <= 1 || !heroAutoplay || window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return undefined;
+        const timer = window.setTimeout(() => {
+            setHeroIndex((currentIndex) => (currentIndex + 1) % heroBanners.length);
+        }, 6000);
+        return () => window.clearTimeout(timer);
+    }, [heroBanners.length, heroAutoplay, heroIndex]);
 
     const submitNewsletter = async (event) => {
         event.preventDefault();
@@ -57,14 +84,33 @@ function OffdayHome() {
 
     return (
         <main className="offday-home">
-            <section className="offday-hero" aria-labelledby="offday-hero-title">
-                <img className="offday-hero-image" src="/offday/graphic-tee-street.jpeg" alt="OFFDAY streetwear, worn for everyday" fetchPriority="high" />
+            <section className="offday-hero" aria-label="Homepage hero images" aria-roledescription="carousel">
+                {heroImage && <img key={heroBanner?.id ?? heroIndex} className="offday-hero-image" src={heroImage} alt={heroBanner?.title || heroBanner?.subtitle || "OFFDAY streetwear, worn for everyday"} fetchPriority="high" />}
                 <div className="offday-hero-copy">
-                    <p className="offday-eyebrow">Elevated everyday streetwear</p>
-                    <h1 id="offday-hero-title">MADE FOR<br />YOUR OFFDAY.</h1>
-                    <p>Relaxed fits. Considered essentials.<br />Made for the days you choose.</p>
-                    <Link className="offday-button offday-button-lime" to="/collections/offday-drops">Explore the collection</Link>
+                    <p className="offday-eyebrow">{heroBanner?.subtitle || "Elevated everyday streetwear"}</p>
+                    <h1 id="offday-hero-title">{heroBanner?.title || "MADE FOR\nYOUR OFFDAY."}</h1>
+                    <p>{heroBanner?.description || "Relaxed fits. Considered essentials.\nMade for the days you choose."}</p>
+                    <Link className="offday-button offday-button-lime" to="/collections/offday-drops">{heroBanner?.button_text || "Explore the collection"}</Link>
                 </div>
+                {heroBanners.length > 1 && (
+                    <div className="offday-hero-controls" role="group" aria-label="Hero image controls">
+                        <button className="offday-hero-arrow" type="button" aria-label="Previous hero image" onClick={() => setHeroIndex((heroIndex - 1 + heroBanners.length) % heroBanners.length)}>‹</button>
+                        <div className="offday-hero-dots" aria-label={`Hero image ${heroIndex + 1} of ${heroBanners.length}`}>
+                            {heroBanners.map((banner, index) => (
+                                <button
+                                    className={`offday-hero-dot${index === heroIndex ? " is-active" : ""}`}
+                                    key={banner.id ?? index}
+                                    type="button"
+                                    aria-label={`Show hero image ${index + 1}`}
+                                    aria-current={index === heroIndex ? "true" : undefined}
+                                    onClick={() => setHeroIndex(index)}
+                                />
+                            ))}
+                        </div>
+                        <button className="offday-hero-arrow" type="button" aria-label="Next hero image" onClick={() => setHeroIndex((heroIndex + 1) % heroBanners.length)}>›</button>
+                        <button className="offday-hero-autoplay" type="button" aria-label={heroAutoplay ? "Pause hero slideshow" : "Play hero slideshow"} aria-pressed={!heroAutoplay} onClick={() => setHeroAutoplay((playing) => !playing)}>{heroAutoplay ? "Pause" : "Play"}</button>
+                    </div>
+                )}
             </section>
 
             <div className="offday-marquee" aria-label="Oversized fits, heavyweight basics, everyday streetwear, drop 001">
@@ -83,7 +129,7 @@ function OffdayHome() {
                 <div className="offday-collection-grid">
                     {collections.slice(0, 4).map((collection) => {
                         const slug = collectionSlug(collection.name);
-                        const image = collection.image ? getImageUrl(collection.image) : categoryFallbacks[slug];
+                        const image = collection.image ? getImageUrl(collection.image) : "";
                         return (
                             <Link className="offday-collection-card" to={`/collections/${slug}`} key={collection.id ?? slug}>
                                 {image && <img src={image} alt="" loading="lazy" decoding="async" />}
@@ -111,7 +157,7 @@ function OffdayHome() {
             </section>
 
             <section className="offday-story" aria-labelledby="offday-story-title">
-                <div className="offday-story-image"><img src="/offday/oversized-tee.jpeg" alt="Relaxed oversized tee from the OFFDAY everyday collection" loading="lazy" decoding="async" /></div>
+                <div className="offday-story-image">{storyImage && <img src={storyImage} alt="OFFDAY story section" loading="lazy" decoding="async" />}</div>
                 <div className="offday-story-copy">
                     <p className="offday-eyebrow">A different kind of everyday</p>
                     <h2 id="offday-story-title">Less noise.<br />More you.</h2>
@@ -127,7 +173,7 @@ function OffdayHome() {
             </section>
 
             <section className="offday-wide-banner" aria-labelledby="offday-wide-title">
-                <img src="/offday/graphic-tee-front.jpeg" alt="OFFDAY relaxed graphic tee" loading="lazy" decoding="async" />
+                {wideBannerImage && <img src={wideBannerImage} alt="OFFDAY campaign banner" loading="lazy" decoding="async" />}
                 <div className="offday-wide-banner-copy"><p className="offday-eyebrow">Wear it your way</p><h2 id="offday-wide-title">OWN YOUR OFFDAY.</h2><Link className="offday-button offday-button-lime" to="/shop">Shop the edit</Link></div>
             </section>
 

@@ -6,7 +6,7 @@ function HeroSideBanner_Query(options = {}) {
         queryKey: ["hero-side-banner"],
         queryFn: getHeroSideBanner,
         enabled: options.enabled ?? true,
-        staleTime: 1000 * 60 * 5,
+        staleTime: options.staleTime ?? 1000 * 60 * 5,
     });
 }
 

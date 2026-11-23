@@ -6,6 +6,10 @@
     min-width: 0;
 }
 
+.offday-product-media {
+    position: relative;
+}
+
 .offday-product-image {
     position: relative;
     display: block;
@@ -81,36 +85,46 @@
 }
 
 .offday-quick-add {
-    display: inline-flex;
-    min-height: 34px;
+    position: absolute;
+    z-index: 2;
+    right: 12px;
+    bottom: 12px;
+    left: 12px;
+    display: flex;
+    min-height: 40px;
     align-items: center;
-    margin-top: 10px;
-    padding: 0 12px;
-    border: 1px solid var(--offday-black);
-    background: transparent;
+    justify-content: center;
+    padding: 0 14px;
+    border: 1px solid var(--offday-lime);
+    background: var(--offday-lime);
     color: var(--offday-black);
     cursor: pointer;
     font-family: var(--offday-body);
     font-size: 9px;
     font-weight: 700;
     letter-spacing: 0.1em;
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 160ms ease, transform 160ms ease, background-color 160ms ease, color 160ms ease;
 }
 
 @media (min-width: 851px) and (hover: hover) {
     .offday-quick-add {
         opacity: 0;
-        transform: translateY(3px);
-        transition: opacity 160ms ease, transform 160ms ease;
+        visibility: hidden;
+        transform: translateY(6px);
     }
 
-    .offday-product-card:hover .offday-quick-add,
-    .offday-product-card:focus-within .offday-quick-add {
+    .offday-product-media:hover .offday-quick-add,
+    .offday-product-media:focus-within .offday-quick-add {
         opacity: 1;
+        visibility: visible;
         transform: translateY(0);
     }
 }
 
 .offday-quick-add:hover:not(:disabled) {
+    border-color: var(--offday-black);
     background: var(--offday-black);
     color: var(--offday-white);
 }
