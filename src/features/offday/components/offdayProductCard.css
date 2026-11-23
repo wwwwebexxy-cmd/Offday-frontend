@@ -78,6 +78,30 @@
     white-space: nowrap;
 }
 
+.offday-product-copy .product-message-rail {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    max-width: 100%;
+    min-height: 20px;
+    margin-top: 6px;
+    padding: 5px 7px;
+    border: 1px solid color-mix(in srgb, var(--product-message-bg, #EAF4FF) 70%, var(--offday-black));
+    background: var(--product-message-bg, #EAF4FF);
+    color: var(--product-message-color, var(--offday-black));
+    font-family: var(--offday-body);
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+.offday-product-copy .product-message-label {
+    overflow-wrap: anywhere;
+    white-space: normal;
+}
+
 .offday-product-copy p {
     margin: 3px 0 0;
     color: var(--offday-muted);
@@ -154,7 +178,9 @@
 
 @media (prefers-reduced-motion: reduce) {
     .offday-product-image img,
-    .offday-quick-add {
+    .offday-quick-add,
+    .offday-product-copy .product-message-rail {
         transition: none;
+        animation: none;
     }
 }

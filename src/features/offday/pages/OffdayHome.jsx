@@ -18,7 +18,7 @@ function OffdayHome() {
     const collections = useMemo(() => getCollections(homepageData.categories), [homepageData.categories]);
     const drops = collections.find((collection) => collectionSlug(collection.name) === "offday-drops");
     const featuredFilter = drops?.id ? { category: drops.id, page_size: 4, sort: "new" } : {};
-    const { data: productPage, isLoading: productsLoading } = Product_Query(featuredFilter, { enabled: Boolean(drops?.id) });
+    const { data: productPage, isLoading: productsLoading } = Product_Query(featuredFilter, { enabled: Boolean(drops?.id), staleTime: 0 });
     const products = productPage?.results || [];
     const heroBanners = useMemo(
         () => (Array.isArray(homepageData.hero_banners)

@@ -6,6 +6,7 @@ import { hasAuthSession } from "../../auth/authUtils";
 import { getProductDetailsPath } from "../../../utils/productUrl";
 import { getImageUrl } from "../../../utils/imageUrl";
 import showToast from "../../../utils/toast";
+import ProductMessageRail from "../../home/components/ProductMessageRail";
 import "./offdayProductCard.css";
 
 function getVariant(product) {
@@ -101,6 +102,7 @@ function OffdayProductCard({ product }) {
                     <Link className="offday-product-name" to={productPath}>{product.name}</Link>
                     <span className="offday-product-price">{price === null ? "Price on request" : `AED ${Math.round(Number(price))}`}</span>
                 </div>
+                <ProductMessageRail messages={product.product_messages} />
                 <p>{details}</p>
             </div>
         </article>

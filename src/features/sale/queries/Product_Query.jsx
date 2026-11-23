@@ -10,7 +10,7 @@ function Product_Query(filter = {}, options = {}) {
         queryFn: () => prodectGet(filter),
         enabled: options.enabled ?? true,
         
-        staleTime: 1000 * 60 * 5, // 5 minutes
+        staleTime: options.staleTime ?? 1000 * 60 * 5, // 5 minutes by default
     });
 }
 
