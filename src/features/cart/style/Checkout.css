@@ -83,8 +83,8 @@
 
 .offday-add-address-btn{
     border:none;
-    background:#2F8D45;
-    color: #FFFFFF;
+    background:var(--offday-lime);
+    color:var(--offday-black);
     padding:10px 18px;
     border-radius:8px;
     font-size:14px;
@@ -94,7 +94,8 @@
 }
 
 .offday-add-address-btn:hover{
-    background:#246D36;
+    background:var(--offday-black);
+    color:var(--offday-white);
 }
 
 .offday-add-address-btn:active{
@@ -118,18 +119,18 @@
 }
 
 .offday-address-card:hover{
-    border-color:#c7c7c7;
-    background:#F8F9F3;
+    border-color:var(--offday-black);
+    background:var(--offday-cream);
 }
 
 .offday-address-card.active{
-    border-color:#2F8D45;
-    background:#EAF4ED;
+    border-color:var(--offday-black);
+    background:color-mix(in srgb, var(--offday-lime) 18%, var(--offday-white));
 }
 
 .offday-address-card input{
     margin-top:4px;
-    accent-color:#2F8D45;
+    accent-color:var(--offday-black);
 }
 
 .offday-address-info{
@@ -193,13 +194,13 @@
 
 .offday-payment-option:hover,
 .offday-payment-option.active{
-    border-color:#2F8D45;
-    background:#FFF8EC;
+    border-color:var(--offday-black);
+    background:color-mix(in srgb, var(--offday-lime) 18%, var(--offday-white));
 }
 
 .offday-payment-option input{
     margin-top:3px;
-    accent-color:#2F8D45;
+    accent-color:var(--offday-black);
 }
 
 .offday-payment-option span{
@@ -347,7 +348,7 @@
 }
 
 .offday-shipping-free{
-    color:#1a8f3c !important;
+    color:var(--offday-black) !important;
     font-weight:600 !important;
 }
 
@@ -370,8 +371,8 @@
     height:52px;
     border:none;
     border-radius:10px;
-    background:#2F8D45;
-    color: #FFFFFF;
+    background:var(--offday-lime);
+    color:var(--offday-black);
     font-size:15px;
     font-weight:600;
     cursor:pointer;
@@ -379,8 +380,9 @@
 }
 
 .offday-checkout-btn:hover{
-    background:#246D36;
-    box-shadow:0 10px 24px rgba(139,47,69,.22);
+    background:var(--offday-black);
+    color:var(--offday-white);
+    box-shadow:0 10px 24px rgb(17 17 17 / 12%);
 }
 
 .offday-checkout-btn:active{
@@ -434,7 +436,7 @@
     margin:0;
     font-size:28px;
     font-weight:700;
-    color:#2F8D45;
+    color:var(--offday-black);
     letter-spacing:-.5px;
 }
 

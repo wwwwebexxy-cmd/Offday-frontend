@@ -236,8 +236,7 @@
     }
 
     .offday-header-search-toggle span,
-    .offday-bag-label,
-    .offday-header-account {
+    .offday-bag-label {
         display: none;
     }
 
@@ -252,6 +251,17 @@
     .offday-header-bag {
         order: 1;
         min-width: 38px;
+    }
+
+    .offday-header-account {
+        order: 2;
+        width: 38px;
+        min-width: 38px;
+        padding: 0;
+    }
+
+    .offday-header-account span {
+        display: none;
     }
 
     .offday-bag-count {

@@ -4,6 +4,7 @@ import { FiMenu, FiSearch, FiShoppingBag, FiUser, FiX } from "react-icons/fi";
 import Homepage_Query from "../features/home/queries/Homepage_Query";
 import Cart_query from "../features/cart/queries/Cart_query";
 import { collectionSlug, getCollections } from "../features/offday/collections";
+import { hasAuthSession } from "../features/auth/authUtils";
 import "./offdayHeader.css";
 
 function OffdayHeader() {
@@ -11,6 +12,7 @@ function OffdayHeader() {
     const navigate = useNavigate();
     const { data: homepageData } = Homepage_Query();
     const { data: cart = {} } = Cart_query();
+    const isLoggedIn = hasAuthSession();
     const collections = useMemo(() => getCollections(homepageData?.categories), [homepageData?.categories]);
     const [menuOpen, setMenuOpen] = useState(false);
     const [searchOpen, setSearchOpen] = useState(false);
@@ -67,9 +69,9 @@ function OffdayHeader() {
                         <span>SEARCH</span>
                     </button>
 
-                    <Link className="offday-header-account" to="/login" aria-label="Login">
+                    <Link className="offday-header-account" to={isLoggedIn ? "/profile" : "/login"} aria-label={isLoggedIn ? "Account" : "Login"}>
                         <FiUser aria-hidden="true" />
-                        <span>LOGIN</span>
+                        <span>{isLoggedIn ? "ACCOUNT" : "LOGIN"}</span>
                     </Link>
                 </div>
 
@@ -110,7 +112,7 @@ function OffdayHeader() {
                     <Link to="/shop">Shop all</Link>
                     <Link to="/about">Our story</Link>
                     <Link to="/help/contact">Contact</Link>
-                    <Link to="/profile">My account</Link>
+                    <Link to={isLoggedIn ? "/profile" : "/login"}>{isLoggedIn ? "My account" : "Login"}</Link>
                     <Link to="/wishlist">Wishlist</Link>
                 </nav>
             )}

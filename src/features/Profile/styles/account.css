@@ -4,9 +4,9 @@
 ========================================================= */
 
 .profile-page {
-    --account-orange: #2F8D45;
-    --account-orange-dark: #246D36;
-    --account-orange-soft: #EAF4ED;
+    --account-orange: var(--offday-lime, #C6F135);
+    --account-orange-dark: var(--offday-black, #111111);
+    --account-orange-soft: var(--offday-cream, #F1F0E9);
     --account-ink: #304a54;
     --account-muted: #71858d;
     --account-border: #e2e8e4;
@@ -324,11 +324,21 @@
     font-weight: 600;
 }
 
+.save-profile-btn,
+.add-address-btn,
+.add-address-small,
+.add-first-address,
+.change-address-btn,
+.edit-address-btn,
+.save-btn {
+    color: var(--offday-black, #111111);
+}
+
 .save-profile-btn {
     min-height: 50px;
     border-radius: 12px;
     background: var(--account-orange);
-    color: #fff;
+    color: var(--offday-black, #111111);
     font-size: 14px;
 }
 
@@ -340,7 +350,8 @@
 .edit-address-btn:hover,
 .save-btn:hover {
     background: var(--account-orange-dark);
-    box-shadow: 0 10px 22px rgba(47, 141, 69, 0.2);
+    color: var(--offday-white, #FFFFFF);
+    box-shadow: 0 10px 22px rgb(17 17 17 / 12%);
     transform: translateY(-1px);
 }
 
@@ -355,7 +366,7 @@
 .cancel-btn:focus-visible,
 .save-btn:focus-visible,
 .close-modal:focus-visible {
-    outline: 3px solid rgba(47, 141, 69, 0.34);
+    outline: 3px solid rgb(198 241 53 / 60%);
     outline-offset: 3px;
 }
 
@@ -367,18 +378,19 @@
     flex: 0 0 auto;
     min-height: 40px;
     padding: 0 16px;
-    border: 1px solid rgba(47, 141, 69, 0.35);
+    border: 1px solid var(--account-orange);
     border-radius: 10px;
-    background: #EAF4ED;
-    color: var(--account-orange-dark);
+    background: var(--account-orange);
+    color: var(--offday-black, #111111);
     font-size: 13px;
     transition: background-color 180ms ease, border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
 }
 
 .edit-profile-btn:hover {
-    border-color: var(--account-orange);
-    background: #EAF4ED;
-    box-shadow: 0 8px 18px rgba(47, 141, 69, 0.14);
+    border-color: var(--account-orange-dark);
+    background: var(--account-orange-dark);
+    color: var(--offday-white, #FFFFFF);
+    box-shadow: 0 8px 18px rgb(17 17 17 / 12%);
     transform: translateY(-1px);
 }
 
@@ -524,7 +536,7 @@
     padding: 0 16px;
     border-radius: 10px;
     background: var(--account-orange);
-    color: #fff;
+    color: var(--offday-black, #111111);
     font-size: 13px;
 }
 
@@ -599,7 +611,7 @@
     padding: 0 18px;
     border-radius: 11px;
     background: var(--account-orange);
-    color: #fff;
+    color: var(--offday-black, #111111);
     font-size: 13px;
     white-space: nowrap;
 }
@@ -670,13 +682,13 @@
 
 .edit-address-btn {
     background: var(--account-orange);
-    color: #fff;
+    color: var(--offday-black, #111111);
 }
 
 .delete-address-btn {
     border: 1px solid var(--account-border);
     background: #fff;
-    color: var(--account-ink);
+    color: var(--offday-black, #111111);
 }
 
 .delete-address-btn:hover {
@@ -719,7 +731,7 @@
     padding: 0 17px;
     border-radius: 10px;
     background: var(--account-orange);
-    color: #fff;
+    color: var(--offday-black, #111111);
     font-size: 13px;
 }
 
@@ -863,18 +875,18 @@
 }
 
 .cancel-btn {
-    background: #f1f4f1;
-    color: var(--account-ink);
+    background: var(--offday-cream, #F1F0E9);
+    color: var(--offday-black, #111111);
 }
 
 .cancel-btn:hover {
-    background: #e5ebe7;
+    background: var(--account-border);
     transform: translateY(-1px);
 }
 
 .save-btn {
     background: var(--account-orange);
-    color: #fff;
+    color: var(--offday-black, #111111);
 }
 
 /* Quick actions */
@@ -934,7 +946,7 @@
 
 .quick-card:hover .quick-icon {
     background: var(--account-orange);
-    color: #fff;
+    color: var(--offday-black, #111111);
 }
 
 .quick-card h3 {

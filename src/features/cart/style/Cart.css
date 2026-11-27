@@ -70,7 +70,7 @@
 }
 
 .product-details p {
-    color: #4B636D;
+    color: var(--offday-muted);
     font-size: 14px;
 }
 
@@ -88,8 +88,8 @@
     height: 32px;
     border: none;
     border-radius: 6px;
-    background: #EAF4ED;
-    color: #2F8D45;
+    background: var(--offday-lime);
+    color: var(--offday-black);
     font-size: 20px;
     cursor: pointer;
     display: flex;
@@ -109,7 +109,7 @@
 .cart_remove-btn {
     border: none;
     background: none;
-    color: #2F8D45;
+    color: var(--offday-black);
     cursor: pointer;
     font-size: 14px;
 }
@@ -171,14 +171,15 @@
     width: 120px;
     border: none;
     border-radius: 8px;
-    background: #2F8D45;
-    color: #FFFFFF;
+    background: var(--offday-lime);
+    color: var(--offday-black);
     cursor: pointer;
     transition: .3s;
 }
 
 .coupon button:hover {
-    background: #246D36;
+    background: var(--offday-black);
+    color: var(--offday-white);
 }
 
 .coupon-inactive-warning {
@@ -202,7 +203,7 @@
 }
 
 .price-row {
-    color: #4B636D;
+    color: var(--offday-muted);
     font-size: 15px;
 }
 
@@ -212,7 +213,7 @@
     border-top: 1px solid #EEEFE9;
     font-size: 28px;
     font-weight: bold;
-    color: #2F8D45;
+    color: var(--offday-black);
     font-family: Georgia, serif;
 }
 
@@ -224,15 +225,16 @@
     padding: 16px;
     border: none;
     border-radius: 8px;
-    background: #2F8D45;
-    color: #FFFFFF;
+    background: var(--offday-lime);
+    color: var(--offday-black);
     font-size: 16px;
     cursor: pointer;
     transition: .3s;
 }
 
 .continue-btn:hover {
-    background: #246D36;
+    background: var(--offday-black);
+    color: var(--offday-white);
 }
 
 /* TABLET */
